@@ -10,6 +10,9 @@ const usersController = (data) => {
     },
 
     createUser(req, res) {
+      if (req.user) {
+        return res.status(400).json({ errorMessage: 'User is already logged in!' })
+      }
       const user = JSON.parse(req.body);
 
       return data.users.create(user)
@@ -28,26 +31,19 @@ const usersController = (data) => {
         });
     },
 
-    authenticate(req, res, next) {
-      return passport.authenticate('local', (err, user) => {
-        if (err) {
-          return res.status(400).json({errorMsg: err})
-        }
-        req.login(user, (error) => {
-          if (error) {
-            return res.status(400).json({errorMsg: err})
-          }
-          return res
-            .status(201)
-            .json({successMsg: 'You are successfully logged in!'})
+    authenticate(req, res) {
+      res
+        .status(200)
+        .json({
+          _id: req.user._id,
+          username: req.user.username,
+          msg: 'You are successfully logged in!'
         });
-        return next();
-      })(req, res, next);
     },
 
     getUserById(req, res) {
       if (!req.user) {
-        return res.status(401).json({err: 'You are not logged in'})
+        return res.status(401).json({err: 'You are not logged in!'})
       }
       const id = req.params.id;
       return data.users.getById(id)
@@ -57,7 +53,7 @@ const usersController = (data) => {
     },
 
     logoutUser(req, res) {
-      req.logout();
+      req.session.destroy();
       return res
         .status(200)
         .json({infoMsg: 'You are logged out!'})

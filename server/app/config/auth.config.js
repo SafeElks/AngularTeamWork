@@ -5,7 +5,7 @@ const attachTo = (app, usersData) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.use(new Strategy(
+  passport.use('local', new Strategy(
     (username, password, done) => {
       return usersData.getByObjectName(username)
         .then((user) => usersData.checkPassword(user, password))
@@ -22,6 +22,14 @@ const attachTo = (app, usersData) => {
     return usersData.getById(id)
       .then((user) => done(null, user))
       .catch((error) => done(error));
+  });
+
+  app.use((req, res, next) => {
+    res.locals = res.locals || {};
+
+    res.locals.user = req.user;
+
+    next();
   });
 };
 
