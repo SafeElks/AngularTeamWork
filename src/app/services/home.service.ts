@@ -4,10 +4,10 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class AppService {
+export class HomeService {
   constructor(private http: Http) { }
 
-  getInfo(): Promise<string> {
+  getHomeInfo(): Promise<string> {
     return this.http.get('api/hello')
       .toPromise()
       .then(response => response.text());

@@ -1,7 +1,7 @@
 const homeController = () => {
   return {
-    getMainPage(req, res){
-      return res.send('Hello from server');
+    getHomeInfo(req, res){
+      return res.send('Home');
     },
   };
 };

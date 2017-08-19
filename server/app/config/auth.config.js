@@ -5,7 +5,7 @@ const attachTo = (app, usersData) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.use('local', new Strategy(
+  passport.use(new Strategy('local',
     (username, password, done) => {
       return usersData.getByObjectName(username)
         .then((user) => usersData.checkPassword(user, password))

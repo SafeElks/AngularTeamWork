@@ -1,5 +1,5 @@
 const attachTo = (app, {homeController}) => {
-  app.get('/api/hello', homeController.getMainPage);
+  app.get('/api/home', homeController.getHomeInfo);
 };
 
 module.exports = {attachTo};

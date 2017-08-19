@@ -11,20 +11,20 @@ const usersController = (data) => {
 
     createUser(req, res) {
       if (req.user) {
-        return res.status(400).json({ errorMessage: 'User is already logged in!' })
+        return res.status(400).json({ errorMessage: 'You are already logged in!' })
       }
-      const user = JSON.parse(req.body);
+
+      const user = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+      };
 
       return data.users.create(user)
-        .then((dbUser) => {
-          req.login(dbUser, (err) => {
-            if (err) {
-              return Promise.reject(err);
-            }
-            return res
-              .status(201)
-              .json({successMsg: 'You are successfully registered!'})
-          });
+        .then(() => {
+          return res
+            .status(201)
+            .json({successMsg: 'You are successfully registered!'})
         })
         .catch((err) => {
           return res.status(400).json({errorMsg: err})
@@ -32,12 +32,13 @@ const usersController = (data) => {
     },
 
     authenticate(req, res) {
-      res
+      if (req.user) {
+        return res.status(400).json({ errorMessage: 'You are already logged in!' })
+      }
+      return res
         .status(200)
         .json({
-          _id: req.user._id,
-          username: req.user.username,
-          msg: 'You are successfully logged in!'
+          msg: 'You are logged in!'
         });
     },
 
