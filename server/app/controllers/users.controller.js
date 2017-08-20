@@ -31,15 +31,27 @@ const usersController = (data) => {
         });
     },
 
-    authenticate(req, res) {
+    authenticate(req, res, next) {
       if (req.user) {
         return res.status(400).json({ errorMessage: 'You are already logged in!' })
       }
-      return res
-        .status(200)
-        .json({
-          msg: 'You are logged in!'
+      return passport.authenticate('local', (err, user) => {
+        if (err) {
+          return res.status(400).json({ errorMessage: err })
+        }
+        req.login(user, (error) => {
+          if (error) {
+            return res.status(400).json({ errorMessage: error })
+          }
+          return res
+            .status(200)
+            .json({
+              name: req.user.name,
+              msg: 'You are logged in!'
+            });
         });
+        return next();
+      })(req, res, next);
     },
 
     getUserById(req, res) {

@@ -34,11 +34,11 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.user)
       .map((res) => res.json())
       .subscribe((response: any) => {
-        if (!response.username) {
+        if (!response.name) {
           throw new Error('Something went wrong!');
         }
 
-        this.authService.setLoggedUser(response.username);
+        this.authService.setLoggedUser(response.name);
 
         console.log('Successfully logged in!');
       }, (err) => {

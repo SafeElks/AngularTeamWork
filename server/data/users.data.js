@@ -11,7 +11,7 @@ class UsersData extends BaseData {
 
   create(user) {
     if (!this._isModelValid(user)) {
-      return Promise.reject('Invalid users');
+      return Promise.reject('Invalid user');
     }
     return this.collection.findOne({
       name: user.name,
@@ -28,7 +28,7 @@ class UsersData extends BaseData {
 
   checkPassword(user, password) {
     if (!user) {
-      return Promise.reject('Invalid users');
+      return Promise.reject('Invalid user');
     }
 
     if (user.password !== CryptoJS.SHA1(password).toString()) {
