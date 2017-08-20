@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdToolbarModule } from '@angular/material';
+import { MdButtonModule, MdToolbarModule, MdCardModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 import { HomeModule } from './home/home.module';
@@ -32,6 +32,7 @@ import { HomeService } from './services/home.service';
     UsersModule,
     MdToolbarModule,
     MdButtonModule,
+    MdCardModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
     ])

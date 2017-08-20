@@ -5,7 +5,7 @@
     <a href="/login">Login</a>
   </div>
   <div class="user-info" *ngIf="isLoggedIn == true">
-    <span>Hello {{ currentUser }}</span>
+    <a href="/profile">{{ currentUser }}</a>
     <a href="/logout">Logout</a>
   </div>
 </md-toolbar>

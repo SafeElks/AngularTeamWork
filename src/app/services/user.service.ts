@@ -6,9 +6,11 @@ import { Http, Headers, Response } from '@angular/http';
 @Injectable()
 export class UserService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
+
   private registerUrl = '/api/users';
   private loginUrl = '/api/authenticate';
   private logoutUrl = '/api/logout';
+  private profileUrl = '/api/users/';
 
   constructor(private http: Http) { }
 
@@ -28,5 +30,9 @@ export class UserService {
 
   logoutUser(): Observable<Response> {
     return this.http.get(this.logoutUrl);
+  }
+
+  getProfile(id: string): Observable<Response> {
+    return this.http.get(this.profileUrl + id);
   }
 }

@@ -39,12 +39,13 @@ export class LoginComponent implements OnInit {
         }
 
         this.authService.setLoggedUser(response.name);
+        this.authService.setLoggedUserId(response.id);
 
         console.log('Successfully logged in!');
       }, (err) => {
         console.log(err);
       }, () => {
-        this.appRouter.navigateByUrl('');
+        this.appRouter.navigateByUrl('profile');
       });
   }
 }
