@@ -1,7 +1,7 @@
 const homeController = () => {
   return {
     getHomeInfo(req, res){
-      return res.send('Home');
+      return res.json({ info:'Home' });
     },
   };
 };

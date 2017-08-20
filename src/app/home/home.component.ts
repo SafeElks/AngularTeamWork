@@ -12,7 +12,10 @@ export class HomeComponent implements OnInit {
 
   getInfo(): void {
     this.appService.getHomeInfo()
-      .then(info => this.info = info);
+      .map((res) => res.json())
+      .subscribe((response: any) => {
+        this.info = response.info;
+      });
   }
 
   ngOnInit(): void {

@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class HomeService {
   constructor(private http: Http) { }
 
-  getHomeInfo(): Promise<string> {
-    return this.http.get('api/hello')
-      .toPromise()
-      .then(response => response.text());
+  getHomeInfo(): Observable<Response> {
+    return this.http.get('api/home');
   }
 }
