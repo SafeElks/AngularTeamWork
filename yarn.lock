@@ -175,6 +175,10 @@
     magic-string "^0.22.3"
     source-map "^0.5.6"
 
+"@qontu/ngx-inline-editor@^0.2.0-alpha.10":
+  version "0.2.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@qontu/ngx-inline-editor/-/ngx-inline-editor-0.2.0-alpha.10.tgz#5be59e5e5432b43ef07568bb82289ac42f592806"
+
 "@types/jasmine@*", "@types/jasmine@~2.5.53":
   version "2.5.53"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.53.tgz#4e0cefad09df5ec48c8dd40433512f84b1568d61"
@@ -642,6 +646,10 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bootstrap@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
 brace-expansion@^1.1.7:
   version "1.1.8"
@@ -3312,6 +3320,10 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
+moment@2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+
 mongodb-core@2.1.15:
   version "2.1.15"
   resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.15.tgz#841f53b87ffff4c7458189c35c8ae827e1169764"
@@ -3367,6 +3379,12 @@ ncname@1.0.x:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+ngx-bootstrap@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-1.8.1.tgz#317c0fecf0a88248031b3f6102466ebf86658dfd"
+  dependencies:
+    moment "2.18.1"
 
 ngx-cookie-service@^1.0.7:
   version "1.0.7"

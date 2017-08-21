@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MdInputModule, MdButtonModule, MdCardModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InlineEditorModule } from '@qontu/ngx-inline-editor';
 import { UsersRouterModule } from './users-router.module';
 
 import { UsersComponent } from './users.component';
@@ -20,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
     MdInputModule,
     MdButtonModule,
     MdCardModule,
+    InlineEditorModule,
     BrowserAnimationsModule
   ],
   declarations: [

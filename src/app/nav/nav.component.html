@@ -1,11 +1,11 @@
 <md-toolbar>
-  <a href="/">Home</a>
+  <a [routerLink]="['/']">Home</a>
   <div class="user-info" *ngIf="isLoggedIn == false">
-    <a href="/register">Register</a>
-    <a href="/login">Login</a>
+    <a [routerLink]="['/register']">Register</a>
+    <a [routerLink]="['/login']">Login</a>
   </div>
   <div class="user-info" *ngIf="isLoggedIn == true">
-    <a href="/profile">{{ currentUser }}</a>
-    <a href="/logout">Logout</a>
+    <a [routerLink]="['/profile']">{{ currentUser }}</a>
+    <a [routerLink]="['/logout']">Logout</a>
   </div>
 </md-toolbar>

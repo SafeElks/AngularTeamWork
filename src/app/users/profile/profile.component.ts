@@ -29,4 +29,9 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  saveEditable(value) {
+    // call to http service
+    console.log('http.service: ' + value);
+  }
+
 }

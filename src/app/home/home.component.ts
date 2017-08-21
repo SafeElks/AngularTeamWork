@@ -10,16 +10,12 @@ export class HomeComponent implements OnInit {
   info: string;
   constructor(private appService: HomeService) { }
 
-  getInfo(): void {
+  ngOnInit(): void {
     this.appService.getHomeInfo()
       .map((res) => res.json())
       .subscribe((response: any) => {
         this.info = response.info;
       });
-  }
-
-  ngOnInit(): void {
-    this.getInfo();
   }
 
 }
