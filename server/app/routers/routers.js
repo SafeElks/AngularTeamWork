@@ -9,7 +9,6 @@ const attachTo = (app, controllers) => {
       require(modulePath).attachTo(app, controllers);
     });
 
-  // TODO: think how to remove this shit
   app
     .get('*', function (req, res) {
       res

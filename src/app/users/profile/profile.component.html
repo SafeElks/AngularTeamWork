@@ -7,7 +7,7 @@
   </md-card-header>
   <img md-card-image src="../../../assets/images/blank-profile-picture-973460_640.png">
   <md-card-content>
-    <inline-editor type="textarea" [(ngModel)]="profileInfo" (onSave)="saveEditable($event)" )></inline-editor>
+    <p #i contenteditable='' (blur)="saveEditable(i.innerHTML)">{{profileInfo}}</p>
   </md-card-content>
   <md-card-actions>
     <button md-button>LIKE</button>
