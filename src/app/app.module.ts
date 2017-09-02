@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomeModule } from './home/home.module';
 import { UsersModule } from './users/users.module';
+import { PlanModule } from './plan/plan.module';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -30,6 +31,7 @@ import { HomeService } from './services/home.service';
     BrowserAnimationsModule,
     HomeModule,
     UsersModule,
+    PlanModule,
     MdToolbarModule,
     MdButtonModule,
     MdCardModule,
