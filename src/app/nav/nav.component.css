@@ -7,3 +7,12 @@ a {
   margin-left: auto;
   float:right;
 }
+
+md-toolbar {
+  margin: 0;
+  background-color: #262626;
+}
+
+a {
+  color: #fff;
+}
