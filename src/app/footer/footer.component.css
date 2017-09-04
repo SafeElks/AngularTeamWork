@@ -5,27 +5,49 @@ footer {
     height: 68px;
     background-color: #262626;
     font-family: 'Roboto';
+    font-size: 14px;
+    padding-top: 5px;
+}
+.logo {
+    display: inline;
+    float: left;
+    height: 65px;
+    padding: 0;
+    margin: 0;
 }
 
+.text-right {
+    display: inline;
+    float: right;
+    height: 65px;
+    margin: 0 30px;
+    line-height: 35px;
+}
 .logo img { 
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     margin: 0 15px;
     vertical-align: middle;
 }
 
 .logo p {
-    display: inline-block;
-    font-size: 14px;
+    display: inline;
     color: #fff;
 }
 
-.logo a {
+.logo a,
+.repo a {
     text-decoration: none;
     color: #fff;
 }
 
-.logo a:hover,
-.logo a:active {
+.telerik a:hover,
+.telerik a:active {
     color: #5ce501;
 }
+
+.repo a:hover,
+.repo a:active {
+    color: #0366d6;
+}
+
