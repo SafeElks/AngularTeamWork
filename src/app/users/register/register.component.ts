@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  title = 'Register';
   private user: User = new User();
 
   constructor(

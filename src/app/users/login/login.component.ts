@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 })
 
 export class LoginComponent implements OnInit {
-
+  title = 'Login';
   private user: User = new User();
 
   constructor(

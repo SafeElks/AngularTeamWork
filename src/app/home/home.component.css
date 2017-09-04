@@ -10,7 +10,7 @@
 
 .content-row {
     width: 100%;
-    min-width: 540px;
+    /* min-width: 540px; */
 }
 .content-row img {
     vertical-align: middle;
