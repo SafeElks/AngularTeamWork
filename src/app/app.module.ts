@@ -17,13 +17,15 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { HomeService } from './services/home.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
-  ],
+    NavComponent,
+    FooterComponent
+],
   imports: [
     BrowserModule,
     HttpModule,
