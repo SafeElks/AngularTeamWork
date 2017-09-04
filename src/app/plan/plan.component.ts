@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plan.component.css']
 })
 export class PlanComponent implements OnInit {
-
+  title = 'Tell us about yourself';
   constructor() { }
 
   ngOnInit() {
