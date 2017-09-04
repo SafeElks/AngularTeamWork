@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HomeService} from '../services/home.service';
+import { HomeService } from '../services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +8,13 @@ import {HomeService} from '../services/home.service';
 })
 export class HomeComponent implements OnInit {
   info: string;
+  logos = [{
+    logoUrl: '../../assets/images/healthy.png', text: 'Eat Healthy'
+  }, {
+    logoUrl: '../../assets/images/exercise.png', text: 'Exercise'
+  }, {
+    logoUrl: '../../assets/images/super.png', text: 'Become Superhuman'
+  }];
   constructor(private appService: HomeService) { }
 
   ngOnInit(): void {

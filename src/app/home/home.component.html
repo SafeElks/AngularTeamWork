@@ -1,15 +1,14 @@
 <app-header></app-header>
 <div class="content">
-  <h1>
-    {{info}}
-  </h1>
-  <h3>...</h3>
-  <h3>under construction</h3>
-  <h3>...</h3>
-  <h3>[IMAGE] EAT HEALTHY</h3>
-  <h3>...</h3>
-  <h3> EXERCISE [IMAGE]</h3>
-  <h3>...</h3>
-  <h3>[IMAGE] BECOME SUPERMAN</h3>
+  <div *ngFor="let logo of logos; let i = index">
+    <div *ngIf="i % 2" class='content-row'>
+      <img src="{{logo.logoUrl}}" alt="logo">
+      <h2>{{logo.text}}</h2>
+    </div>
+    <div *ngIf="!(i % 2)" class='content-row'>
+      <h2>{{logo.text}}</h2>
+      <img src="{{logo.logoUrl}}" alt="logo">
+    </div>
+  </div>
   <a md-raised-button [routerLink]="['/plan']">Get Started</a>
 </div>
