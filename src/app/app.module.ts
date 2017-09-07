@@ -1,23 +1,23 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdToolbarModule, MdCardModule } from '@angular/material';
-import { RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MdButtonModule, MdToolbarModule, MdCardModule, MdPaginatorModule, MdTableModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
+import {CdkTableModule} from '@angular/cdk';
+import {HomeModule} from './home/home.module';
+import {UsersModule} from './users/users.module';
+import {PlanModule} from './plan/plan.module';
 
-import { HomeModule } from './home/home.module';
-import { UsersModule } from './users/users.module';
-import { PlanModule } from './plan/plan.module';
+import {AppComponent} from './app.component';
+import {NavComponent} from './nav/nav.component';
 
-import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-
-import { CookieService } from 'ngx-cookie-service';
-import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
-import { HomeService } from './services/home.service';
-import { FooterComponent } from './footer/footer.component';
+import {CookieService} from 'ngx-cookie-service';
+import {AuthService} from './services/auth.service';
+import {UserService} from './services/user.service';
+import {HomeService} from './services/home.service';
+import {FooterComponent} from './footer/footer.component';
 
 
 @NgModule({
@@ -25,8 +25,9 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     NavComponent,
     FooterComponent
-],
+  ],
   imports: [
+    CdkTableModule,
     BrowserModule,
     HttpModule,
     FormsModule,
@@ -37,8 +38,10 @@ import { FooterComponent } from './footer/footer.component';
     MdToolbarModule,
     MdButtonModule,
     MdCardModule,
+    MdPaginatorModule,
+    MdTableModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: '/', pathMatch: 'full' },
+      {path: '', redirectTo: '/', pathMatch: 'full'},
     ])
   ],
   bootstrap: [AppComponent],
@@ -49,4 +52,5 @@ import { FooterComponent } from './footer/footer.component';
     HomeService
   ]
 })
-export class AppModule { }
+export class AppModule {
+}
