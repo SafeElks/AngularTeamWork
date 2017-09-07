@@ -29,4 +29,11 @@
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
     <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
   </md-table>
+
+  <md-paginator #paginator
+                [length]="users.length"
+                [pageIndex]="0"
+                [pageSize]="5"
+                [pageSizeOptions]="[1, 5, 10, 25, 100]">
+  </md-paginator>
 </div>

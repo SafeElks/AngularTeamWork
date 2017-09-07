@@ -22,6 +22,7 @@ export class ListComponent implements OnInit {
   @ViewChild(MdPaginator) paginator: MdPaginator;
 
   constructor(private userService: UserService) {
+    this.users = [];
   }
 
   ngOnInit() {
@@ -29,20 +30,31 @@ export class ListComponent implements OnInit {
       .map((res) => res.json())
       .subscribe(res => {
         this.users = res;
-        this.dataSource = new UsersDataSource(this.users);
+        this.dataSource = new UsersDataSource(this.users, this.paginator);
       });
   }
 }
 
 
 export class UsersDataSource extends DataSource<any> {
-  constructor(private data: UserData[]) {
+  constructor(private data: UserData[], private paginator: MdPaginator) {
     super();
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<UserData[]> {
-    return Observable.of(this.data);
+    const displayDataChanges = [
+      this.data,
+      this.paginator.page,
+    ];
+
+    return Observable.merge(...displayDataChanges).map(() => {
+      const data = this.data.slice();
+
+      // Grab the page's slice of data.
+      const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+      return data.splice(startIndex, this.paginator.pageSize);
+    });
   }
 
   disconnect() {

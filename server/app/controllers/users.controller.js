@@ -18,7 +18,7 @@ const usersController = (data) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        info: 'No profile info! Click to edit!'
+        info: 'No profile info!'
       };
 
       return data.users.create(user)
