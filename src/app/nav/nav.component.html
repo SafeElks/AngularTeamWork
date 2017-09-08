@@ -1,5 +1,6 @@
 <md-toolbar>
   <a [routerLink]="['/']">Home</a>
+  <a [routerLink]="['/users']">Users</a>
   <div class="user-info" *ngIf="isLoggedIn == false">
     <a [routerLink]="['/register']">Register</a>
     <a [routerLink]="['/login']">Login</a>
