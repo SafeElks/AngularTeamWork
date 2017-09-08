@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InlineEditorModule } from '@qontu/ngx-inline-editor';
-import { MdButtonModule, MdInputModule } from '@angular/material';
+import { MdButtonModule, MdRadioModule, MdSelectModule, MdInputModule } from '@angular/material';
 import { NgForm, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,8 @@ import { PlanRouterModule } from './plan-router.module';
     FormsModule,
     MdButtonModule,
     MdInputModule,
+    MdRadioModule,
+    MdSelectModule,
     InlineEditorModule,
     BrowserAnimationsModule
   ],

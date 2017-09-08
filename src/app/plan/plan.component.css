@@ -8,3 +8,11 @@ h1 {
     text-align: center;
     color: #262626;
 }
+
+.example-radio-button {
+    margin-right: 10px;
+}
+
+md-select {
+    margin-bottom: 40px;
+}

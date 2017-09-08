@@ -5,8 +5,17 @@
     <tr>
       <td>
         <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Username' name="username">
+          <input required mdInput placeholder='Age' name="age">
         </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-radio-group class="example-radio-group">
+          <md-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
+            {{gender}}
+          </md-radio-button>
+        </md-radio-group>
       </td>
     </tr>
     <tr>
@@ -25,16 +34,11 @@
     </tr>
     <tr>
       <td>
-        <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Target(kgs)' name="target">
-        </md-input-container>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='For how many days?' name="time">
-        </md-input-container>
+        <md-select placeholder="Activity" name="activity">
+          <md-option *ngFor="let activity of activities">
+            {{activity}}
+          </md-option>
+        </md-select>
       </td>
     </tr>
     <tr>
