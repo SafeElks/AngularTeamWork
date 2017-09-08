@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  onSubmit(form: NgForm): void {
+  onSubmit(): void {
     this.userService.registerUser(this.user)
       .map((res) => res.json())
       .subscribe((responseUser: any) => {
