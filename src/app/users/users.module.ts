@@ -5,7 +5,7 @@ import {MdInputModule, MdButtonModule, MdCardModule, MdPaginatorModule, MdTableM
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import {UsersRouterModule} from './users-router.module';
-import {CdkTableModule} from '@angular/cdk';
+import {CdkTableModule} from '@angular/cdk/table';
 
 import {UsersComponent} from './users.component';
 import {LoginComponent} from './login/login.component';
