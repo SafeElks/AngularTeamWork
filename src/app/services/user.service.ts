@@ -10,7 +10,7 @@ export class UserService {
   private registerUrl = '/api/users';
   private loginUrl = '/api/authenticate';
   private logoutUrl = '/api/logout';
-  private profileUrl = '/api/users/';
+  private profileUrl = '/api/users';
 
   constructor(private http: Http) { }
 
@@ -33,6 +33,10 @@ export class UserService {
   }
 
   getProfile(id: string): Observable<Response> {
-    return this.http.get(this.profileUrl + id);
+    return this.http.get(this.profileUrl + '/' + id);
+  }
+
+  getUsers(): Observable<Response> {
+    return this.http.get(this.profileUrl);
   }
 }
