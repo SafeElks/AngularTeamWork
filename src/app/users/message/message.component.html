@@ -1,5 +1,5 @@
 <div *ngIf="message" class="message">
-  <p class="{{message.status}}">
+  <p class="{{message.status}}  animated fadeIn" (click)="clearMessage()">
     {{message.text}}
   </p>
 </div>

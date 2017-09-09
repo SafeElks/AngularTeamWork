@@ -6,21 +6,21 @@
     <tr>
       <td>
         <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Username' name="username" [(ngModel)]="user.name">
+          <input required mdInput placeholder='Username' name="username" [(ngModel)]="user.name" (focus)="clearMessage()">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Email' name="email" [(ngModel)]="user.email">
+          <input required mdInput placeholder='Email' name="email" [(ngModel)]="user.email" (focus)="clearMessage()">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Password' type='password' name="password" [(ngModel)]="user.password">
+          <input required mdInput placeholder='Password' type='password' name="password" [(ngModel)]="user.password" (focus)="clearMessage()">
         </md-input-container>
       </td>
     </tr>

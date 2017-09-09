@@ -51,4 +51,7 @@ export class LoginComponent implements OnInit {
         this.appRouter.navigateByUrl('profile');
       });
   }
+  clearMessage() {
+    this.message = '';
+  }
 }

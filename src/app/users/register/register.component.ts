@@ -57,4 +57,8 @@ export class RegisterComponent implements OnInit {
       }, 2000);
       });
   }
+
+  clearMessage() {
+    this.message = '';
+  }
 }
