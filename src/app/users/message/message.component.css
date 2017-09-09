@@ -1,0 +1,16 @@
+
+.message {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.message p {
+    padding: 10px;
+}
+
+.yes {
+    background-color: #5ce501;
+}
+.no {
+    background-color: tomato;
+}

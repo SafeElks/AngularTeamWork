@@ -1,7 +1,7 @@
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import 'rxjs/add/operator/map';
@@ -13,6 +13,8 @@ import 'rxjs/add/operator/map';
 })
 export class RegisterComponent implements OnInit {
   title = 'Register';
+  message;
+
   private user: User = new User();
 
   constructor(
@@ -23,6 +25,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     if (this.authService.isLogged()) {
       console.log('User is already logged in!');
+      this.message = { text: 'User is already logged in!', status: 'no' };
 
       this.appRouter.navigateByUrl('');
     }
@@ -41,13 +44,17 @@ export class RegisterComponent implements OnInit {
     this.userService.registerUser(this.user)
       .map((res) => res.json())
       .subscribe((responseUser: any) => {
-          console.log('Congrats, you are registered!');
-        }, (err) => {
-          console.log(err);
-        },
-        () => {
-          this.appRouter.navigateByUrl('login');
-        });
+        console.log('Congrats, you are registered!');
+        this.message = { text: 'Contrats, you are registered!', status: 'yes' };
+      }, (err) => {
+        console.log(err);
+        const msg = JSON.parse(err._body);
+        this.message = { text: msg.errorMessage, status: 'no' };
+      },
+      () => {
+        setTimeout((router: Router) => {
+          this.appRouter.navigate(['login']);
+      }, 2000);
+      });
   }
-
 }

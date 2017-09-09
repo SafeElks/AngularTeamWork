@@ -1,5 +1,6 @@
 <h1>{{title}}</h1>
-<form class='example-form' #loginForm='ngForm' (ngSubmit)='onSubmit(loginForm)'>
+<app-message [message]="message"></app-message>
+<form class='example-form' #loginForm='ngForm' (ngSubmit)='onSubmit(loginForm)' ngNativeValidate>
   <table class='example-full-width' cellspacing='0'>
     <tr>
       <td>

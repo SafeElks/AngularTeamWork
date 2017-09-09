@@ -13,6 +13,7 @@ import {RegisterComponent} from './register/register.component';
 import {LogoutComponent} from './logout/logout.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ListComponent} from './list/list.component';
+import {MessageComponent} from './message/message.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import {ListComponent} from './list/list.component';
     RegisterComponent,
     LogoutComponent,
     ProfileComponent,
-    ListComponent
+    ListComponent,
+    MessageComponent
   ]
 })
 export class UsersModule {
