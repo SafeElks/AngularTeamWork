@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdButtonModule, MdToolbarModule, MdCardModule, MdPaginatorModule, MdTableModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {CdkTableModule} from '@angular/cdk';
+import {CdkTableModule} from '@angular/cdk/table';
 import {HomeModule} from './home/home.module';
 import {UsersModule} from './users/users.module';
 import {PlanModule} from './plan/plan.module';

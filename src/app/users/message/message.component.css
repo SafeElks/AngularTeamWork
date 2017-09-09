@@ -1,0 +1,10 @@
+
+.message {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.message p {
+    background: tomato;
+    padding: 10px;
+}
