@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
 export class LoginComponent implements OnInit {
   title = 'Login';
   message;
-  private user: User = new User();
+  user: User = new User();
 
   constructor(
     private userService: UserService,
@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isLogged()) {
-      console.log('User is already logged in!');
       this.message = { text: 'User is already logged in!', status: 'no' };
       this.appRouter.navigateByUrl('');
     }
@@ -41,10 +40,7 @@ export class LoginComponent implements OnInit {
 
         this.authService.setLoggedUser(response.name);
         this.authService.setLoggedUserId(response.id);
-
-        console.log('Successfully logged in!');
       }, (err) => {
-        console.log(err);
         const msg = JSON.parse(err._body);
         this.message = { text: msg.errorMessage, status: 'no' };
       }, () => {
