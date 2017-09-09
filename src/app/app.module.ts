@@ -20,6 +20,7 @@ import {AuthService} from './services/auth.service';
 import {UserService} from './services/user.service';
 import {HomeService} from './services/home.service';
 import {FooterComponent} from './footer/footer.component';
+import {PlanService} from './services/plan.service';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {FooterComponent} from './footer/footer.component';
     CookieService,
     AuthService,
     UserService,
-    HomeService
+    HomeService,
+    PlanService
   ]
 })
 export class AppModule {
