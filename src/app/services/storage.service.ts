@@ -8,12 +8,10 @@ export class StorageService {
   }
 
   add(item: string, value: any): void {
-    // this.localStorageService.set(item, value);
     localStorage.setItem(item, value);
   }
 
   get(key: string): any {
-    // this.localStorageService.get(key);
     return localStorage.getItem(key);
   }
 }

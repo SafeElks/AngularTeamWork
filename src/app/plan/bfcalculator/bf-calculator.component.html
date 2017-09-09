@@ -1,3 +1,16 @@
-<p>
-  bf-calculator works!
-</p>
+<div class="container">
+  <h1>{{title}}</h1>
+  <div class="row">
+
+    <md-tab-group>
+      <md-tab label="US Units"><app-bf-form></app-bf-form></md-tab>
+      <md-tab label="Metric Units"><app-bf-form></app-bf-form></md-tab>
+    </md-tab-group>
+
+    <div class="col col-13">
+      <md-card>
+        {{result}}
+      </md-card>
+    </div>
+  </div>
+</div>
