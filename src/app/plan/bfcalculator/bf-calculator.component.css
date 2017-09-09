@@ -8,3 +8,34 @@ h1 {
   text-align: center;
   color: #262626;
 }
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-item {
+  max-width: 50%;
+}
+
+.flex-item-top {
+  align-self: flex-start;
+}
+
+.result {
+  padding: 25px;
+  text-align: center;
+  font-size: x-large;
+  color: greenyellow;
+}
+
+.animate-enter {
+  -webkit-transition: 1s linear all; /* Chrome */
+  transition: 1s linear all;
+  opacity: 0;
+}
+
+.animate-enter.animate-enter-active {
+  opacity: 1;
+}

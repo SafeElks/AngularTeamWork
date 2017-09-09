@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {StorageService} from "../../services/storage.service";
 
 @Component({
   selector: 'app-bf-calculator',
@@ -9,25 +7,13 @@ import {StorageService} from "../../services/storage.service";
 })
 export class BfCalculatorComponent implements OnInit {
   title = 'Body Fat Calculator';
-  height: string;
-  neck: string;
-  waist: string;
-  hip: string;
+  inProgress = false;
   result = 0;
-  private bodyFatKey = "body-fat-data";
 
-  constructor(private storage: StorageService, private router: Router) {
-
+  constructor() {
   }
 
   ngOnInit() {
 
-  }
-
-  onSubmit(form: any): void {
-    const data = JSON.stringify(form);
-    this.storage.add(this.bodyFatKey, data);
-    // nav to calorie calculator route
-    this.router.navigate(['']);
   }
 }

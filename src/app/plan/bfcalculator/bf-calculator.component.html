@@ -2,15 +2,17 @@
   <h1>{{title}}</h1>
   <div class="row">
 
-    <md-tab-group>
+    <md-tab-group class="col col-9">
       <md-tab label="US Units"><app-bf-form></app-bf-form></md-tab>
       <md-tab label="Metric Units"><app-bf-form></app-bf-form></md-tab>
     </md-tab-group>
 
-    <div class="col col-13">
-      <md-card>
-        {{result}}
+    <div class="col col-3 flex-container">
+      <md-card class="result flex-item-top">
+        {{result}}<span>&#37;</span>
       </md-card>
+
+      <md-spinner class="spinner flex-item" [hidden]="inProgress"></md-spinner>
     </div>
   </div>
 </div>
