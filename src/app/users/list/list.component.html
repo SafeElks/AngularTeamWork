@@ -4,44 +4,44 @@
 
     <!-- Name Column -->
     <ng-container cdkColumnDef="userName">
-      <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+      <md-header-cell *cdkHeaderCellDef> Name</md-header-cell>
+      <md-cell *cdkCellDef="let row"><span *ngIf="isAuthenticated === false">{{row.name}}</span>
+        <a *ngIf="isAuthenticated" [routerLink]="['/users', row._id]">{{row.name}}</a></md-cell>
     </ng-container>
-
     <!-- Age Column -->
     <ng-container cdkColumnDef="age">
-      <md-header-cell *cdkHeaderCellDef> Age </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.age}} years </md-cell>
+      <md-header-cell *cdkHeaderCellDef> Age</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.age}} years</md-cell>
     </ng-container>
 
     <!-- Gender Column -->
     <ng-container cdkColumnDef="gender">
-      <md-header-cell *cdkHeaderCellDef> Gender </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.gender}} </md-cell>
+      <md-header-cell *cdkHeaderCellDef> Gender</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.gender}}</md-cell>
     </ng-container>
 
     <!-- Height Column -->
     <ng-container cdkColumnDef="height">
-      <md-header-cell *cdkHeaderCellDef> Height </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.height}}cm </md-cell>
+      <md-header-cell *cdkHeaderCellDef> Height</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.height}}cm</md-cell>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container cdkColumnDef="weight">
-      <md-header-cell *cdkHeaderCellDef> Weight </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.weight}}kg </md-cell>
+      <md-header-cell *cdkHeaderCellDef> Weight</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.weight}}kg</md-cell>
     </ng-container>
 
     <!-- Dream Weight Column -->
     <ng-container cdkColumnDef="dreamKg">
-      <md-header-cell *cdkHeaderCellDef> Dream Weight </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.dreamKg}}kg </md-cell>
+      <md-header-cell *cdkHeaderCellDef> Dream Weight</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.dreamKg}}kg</md-cell>
     </ng-container>
 
     <!-- Email Column -->
     <ng-container cdkColumnDef="email">
-      <md-header-cell *cdkHeaderCellDef> Email </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.email}} </md-cell>
+      <md-header-cell *cdkHeaderCellDef> Email</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.email}}</md-cell>
     </ng-container>
 
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>

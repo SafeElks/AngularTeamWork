@@ -14,6 +14,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ListComponent} from './list/list.component';
 import {MessageComponent} from './message/message.component';
+import {ForeignprofileComponent} from './foreignprofile/foreignprofile.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import {MessageComponent} from './message/message.component';
     LogoutComponent,
     ProfileComponent,
     ListComponent,
-    MessageComponent
+    MessageComponent,
+    ForeignprofileComponent
   ],
   exports: [
     MessageComponent

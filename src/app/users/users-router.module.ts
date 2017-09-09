@@ -6,13 +6,15 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ListComponent} from './list/list.component';
+import {ForeignprofileComponent} from './foreignprofile/foreignprofile.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'users', component: ListComponent}
+  {path: 'users', component: ListComponent},
+  {path: 'users/:id', component: ForeignprofileComponent}
 ];
 
 @NgModule({
