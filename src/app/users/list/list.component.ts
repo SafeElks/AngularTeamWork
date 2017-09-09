@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {MdPaginator} from '@angular/material';
-import {Observable} from 'rxjs/Observable';
-import {DataSource} from '@angular/cdk/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { MdPaginator } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
+import { DataSource } from '@angular/cdk/table';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -15,7 +15,7 @@ import 'rxjs/add/observable/of';
 })
 
 export class ListComponent implements OnInit {
-  displayedColumns = ['userName', 'email', 'password', 'info'];
+  displayedColumns = ['userName', 'gender', 'age', 'weight', 'height', 'dreamKg', 'email'];
   users: Array<any>;
   dataSource: UsersDataSource | null;
 
@@ -63,7 +63,11 @@ export class UsersDataSource extends DataSource<any> {
 
 export interface UserData {
   name: string;
+  gender: boolean;
+  age: number;
+  weight: number;
+  height: number;
+  dreamKg: number;
   email: string;
-  password: string;
-  info: string;
+
 }

@@ -8,32 +8,46 @@
       <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
     </ng-container>
 
+    <!-- Age Column -->
+    <ng-container cdkColumnDef="age">
+      <md-header-cell *cdkHeaderCellDef> Age </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.age}} years </md-cell>
+    </ng-container>
+
+    <!-- Gender Column -->
+    <ng-container cdkColumnDef="gender">
+      <md-header-cell *cdkHeaderCellDef> Gender </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.gender}} </md-cell>
+    </ng-container>
+
+    <!-- Height Column -->
+    <ng-container cdkColumnDef="height">
+      <md-header-cell *cdkHeaderCellDef> Height </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.height}}cm </md-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container cdkColumnDef="weight">
+      <md-header-cell *cdkHeaderCellDef> Weight </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.weight}}kg </md-cell>
+    </ng-container>
+
+    <!-- Dream Weight Column -->
+    <ng-container cdkColumnDef="dreamKg">
+      <md-header-cell *cdkHeaderCellDef> Dream Weight </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.dreamKg}}kg </md-cell>
+    </ng-container>
+
     <!-- Email Column -->
     <ng-container cdkColumnDef="email">
       <md-header-cell *cdkHeaderCellDef> Email </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.email}} </md-cell>
     </ng-container>
 
-    <!-- Password Column -->
-    <ng-container cdkColumnDef="password">
-      <md-header-cell *cdkHeaderCellDef> Password </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.password}} </md-cell>
-    </ng-container>
-
-    <!-- Info Column -->
-    <ng-container cdkColumnDef="info">
-      <md-header-cell *cdkHeaderCellDef> Info </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.info}} </md-cell>
-    </ng-container>
-
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
     <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
   </md-table>
 
-  <md-paginator #paginator
-                [length]="users.length"
-                [pageIndex]="0"
-                [pageSize]="10"
-                [pageSizeOptions]="[5, 10, 25, 100]">
+  <md-paginator #paginator [length]="users.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
   </md-paginator>
 </div>
