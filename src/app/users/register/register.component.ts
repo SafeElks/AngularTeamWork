@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       .map((res) => res.json())
       .subscribe((responseUser: any) => {
         console.log('Congrats, you are registered!');
-        this.message = { text: 'Contrats, you are registered!', status: 'yes' };
+        this.message = { text: 'Congrats, you are registered!', status: 'yes' };
       }, (err) => {
         console.log(err);
         const msg = JSON.parse(err._body);
