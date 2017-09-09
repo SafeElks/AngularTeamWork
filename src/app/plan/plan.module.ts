@@ -1,3 +1,4 @@
+import { UsersModule } from './../users/users.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 
@@ -30,7 +31,8 @@ import {PlanRouterModule} from './plan-router.module';
     InlineEditorModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    UsersModule
   ],
   declarations: [PlanComponent]
 })

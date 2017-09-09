@@ -37,6 +37,9 @@ import {MessageComponent} from './message/message.component';
     ProfileComponent,
     ListComponent,
     MessageComponent
+  ],
+  exports: [
+    MessageComponent
   ]
 })
 export class UsersModule {

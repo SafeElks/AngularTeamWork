@@ -1,33 +1,34 @@
 <h1>{{title}}</h1>
 
-<form *ngIf="showForm === true" class='example-form' #planForm='ngForm' (ngSubmit)='onSubmit()'>
+<form *ngIf="showForm === true" class='example-form' #planForm='ngForm' (ngSubmit)='onSubmit()' ngNativeValidate>
+  <app-message [message]="message"></app-message>
   <table class='example-full-width' cellspacing='0'>
     <tr>
       <td>
         <md-input-container type="number" class='example-full-width'>
-          <input required mdInput placeholder='Age' name="age" [(ngModel)]="physicalDetails.age">
+          <input required mdInput placeholder='Age' name="age" [(ngModel)]="physicalDetails.age" (focus)="clearMessage()">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-radio-group required class="example-radio-group" name="gender" [(ngModel)]="physicalDetails.gender">
-          <md-radio-button [checked]="true" class="example-radio-button" value="true">Male</md-radio-button>
-          <md-radio-button class="example-radio-button" value="false">Female</md-radio-button>
+          <md-radio-button [checked]="true" class="example-radio-button" value="true" (click)="clearMessage()">Male</md-radio-button>
+          <md-radio-button class="example-radio-button" value="false" (click)="clearMessage()">Female</md-radio-button>
         </md-radio-group>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container type="number" class='example-full-width'>
-          <input required mdInput placeholder='Height(cm)' name="height" [(ngModel)]="physicalDetails.height">
+          <input required mdInput placeholder='Height(cm)' name="height" [(ngModel)]="physicalDetails.height" (focus)="clearMessage()">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container type="number" class='example-full-width'>
-          <input required mdInput placeholder='Weight(kgs)' name="weight" [(ngModel)]="physicalDetails.weight">
+          <input required mdInput placeholder='Weight(kgs)' name="weight" [(ngModel)]="physicalDetails.weight" (focus)="clearMessage()">
         </md-input-container>
       </td>
     </tr>
@@ -35,14 +36,14 @@
       <td>
         <md-input-container type="number" class='example-full-width'>
           <input required mdInput placeholder='Your dream weight(kgs)' name="dreamKg"
-                 [(ngModel)]="physicalDetails.dreamKg">
+                 [(ngModel)]="physicalDetails.dreamKg" (focus)="clearMessage()">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
-        <md-form-field required class="example-full-width">
-          <input [(ngModel)]="physicalDetails.days" [ngModelOptions]="{standalone: true}" mdInput [min]="minDate" [max]="maxDate" [mdDatepicker]="picker" placeholder="Choose a date">
+        <md-form-field class="example-full-width">
+          <input required [(ngModel)]="physicalDetails.days" [ngModelOptions]="{standalone: true}" mdInput [min]="minDate" [max]="maxDate" [mdDatepicker]="picker" placeholder="Choose a date" (focus)="clearMessage()">
           <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
           <md-datepicker #picker></md-datepicker>
         </md-form-field>
@@ -50,7 +51,7 @@
     </tr>
     <tr>
       <td>
-        <md-select placeholder="Activity" name="activity" [(ngModel)]="physicalDetails.activity">
+        <md-select required placeholder="Activity" name="activity" [(ngModel)]="physicalDetails.activity" (focus)="clearMessage()">
           <md-option *ngFor="let activity of activities" [value]="activity.value">
             {{activity.type}}
           </md-option>
@@ -64,5 +65,8 @@
     </tr>
   </table>
 </form>
-<div *ngIf="showForm === false">You need to consume {{calories}}kcal per day </div>
-<div *ngIf="showForm === false"><a [routerLink]="['/register']">REGISTER</a> for all our features or <button (click)="goBack()">GO BACK</button></div>
+<div *ngIf="showForm === false" class="results">
+<p>You need to consume <span class="kcal">{{calories}} KCAL</span> per day</p>
+<p>For all our features</p>
+<p><a class="btn-register" [routerLink]="['/register']">REGISTER</a> or <button class="btn-back" (click)="goBack()">GO BACK</button></p>
+</div>

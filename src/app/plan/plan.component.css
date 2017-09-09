@@ -1,5 +1,10 @@
-.example-full-width {
+.example-form {
+    width: 30%;
     margin: 0 auto;
+}
+
+.example-full-width {
+    width: 100%;
 }
 
 h1 {
@@ -15,4 +20,58 @@ h1 {
 
 md-select {
     margin-bottom: 40px;
+}
+
+.results {
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px; 
+    background-color: #EBEBEB;
+    text-align: center;
+    overflow: hidden;
+}
+
+.btn-register {
+    display: inline-block;
+    padding: 15px 32px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: none;
+    font-size: 16px;
+    background-color: royalblue;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+}
+
+.btn-register:hover {
+    background-color: #5278EA;
+}
+.btn-register:active {
+    background-color: #7794E8;
+}
+.btn-back {
+    display: inline-block;
+    padding: 15px 32px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: none;
+    font-size: 16px;
+    background-color: tomato;
+    color: #fff;
+    text-align: center;
+    outline: none;
+}
+
+.btn-back:hover {
+    background: #F67F69;
+}
+
+.btn-back:active {
+    background: #FB9986;
+}
+
+.kcal {
+    text-decoration: underline
 }
