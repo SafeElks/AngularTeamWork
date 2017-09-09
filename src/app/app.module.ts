@@ -6,19 +6,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdButtonModule, MdToolbarModule, MdCardModule, MdPaginatorModule, MdTableModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {CdkTableModule} from '@angular/cdk';
+
+import { LocalStorageModule } from 'angular-2-local-storage';
+
 import {HomeModule} from './home/home.module';
 import {UsersModule} from './users/users.module';
 import {PlanModule} from './plan/plan.module';
 
 import {AppComponent} from './app.component';
 import {NavComponent} from './nav/nav.component';
+import {FooterComponent} from './footer/footer.component';
 
 import {CookieService} from 'ngx-cookie-service';
 import {AuthService} from './services/auth.service';
 import {UserService} from './services/user.service';
 import {HomeService} from './services/home.service';
-import {FooterComponent} from './footer/footer.component';
-
+import {StorageService} from "./services/storage.service";
 
 @NgModule({
   declarations: [
@@ -40,6 +43,10 @@ import {FooterComponent} from './footer/footer.component';
     MdCardModule,
     MdPaginatorModule,
     MdTableModule,
+    LocalStorageModule.withConfig({
+      prefix: 'fitness-app',
+      storageType: 'localStorage'
+    }),
     RouterModule.forRoot([
       {path: '', redirectTo: '/', pathMatch: 'full'},
     ])
@@ -49,7 +56,8 @@ import {FooterComponent} from './footer/footer.component';
     CookieService,
     AuthService,
     UserService,
-    HomeService
+    HomeService,
+    StorageService
   ]
 })
 export class AppModule {
