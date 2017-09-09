@@ -13,7 +13,8 @@ import 'rxjs/add/operator/map';
 })
 export class RegisterComponent implements OnInit {
   title = 'Register';
-  message: string;
+  message;
+
   private user: User = new User();
 
   constructor(
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     if (this.authService.isLogged()) {
       console.log('User is already logged in!');
-      this.message = 'User is already logged in!';
+      this.message = { text: 'User is already logged in!', status: 'no' };
 
       this.appRouter.navigateByUrl('');
     }
@@ -35,10 +36,11 @@ export class RegisterComponent implements OnInit {
       .map((res) => res.json())
       .subscribe((responseUser: any) => {
         console.log('Congrats, you are registered!');
-        this.message = 'Contrats, you are registered!';
+        this.message = { text: 'Contrats, you are registered!', status: 'yes'};
       }, (err) => {
         console.log(err);
-        this.message = 'Something is not right!';
+        const msg = JSON.parse(err._body);
+        this.message = { text: msg.errorMessage, status: 'no' };
       },
       () => {
         this.appRouter.navigateByUrl('login');

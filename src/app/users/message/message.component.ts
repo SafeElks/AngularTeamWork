@@ -5,8 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent{
+export class MessageComponent {
   @Input()
-  message: string;
-
+  message;
 }

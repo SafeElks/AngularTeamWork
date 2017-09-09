@@ -5,6 +5,12 @@
 }
 
 .message p {
-    background: tomato;
     padding: 10px;
+}
+
+.yes {
+    background-color: #5ce501;
+}
+.no {
+    background-color: tomato;
 }

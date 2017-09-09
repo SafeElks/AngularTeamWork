@@ -28,7 +28,7 @@ const usersController = (data) => {
             .json({successMsg: 'You are successfully registered!'})
         })
         .catch((err) => {
-          return res.status(400).json({errorMsg: err})
+          return res.status(400).json({errorMessage: err})
         });
     },
 
