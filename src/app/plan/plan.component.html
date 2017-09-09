@@ -12,7 +12,8 @@
     <tr>
       <td>
         <md-radio-group class="example-radio-group">
-          <md-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
+          <md-radio-button required="" class="example-radio-button" *ngFor="let gender of genders; let idx = index"
+                           [checked]="idx === 0" [value]="gender">
             {{gender}}
           </md-radio-button>
         </md-radio-group>
@@ -30,6 +31,22 @@
         <md-input-container class='example-full-width'>
           <input required mdInput placeholder='Weight(kgs)' name="weight">
         </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class='example-full-width'>
+          <input required mdInput placeholder='Your dream weight(kgs)' name="weight">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-form-field class="example-full-width">
+          <input mdInput [min]="minDate" [max]="maxDate" [mdDatepicker]="picker" placeholder="Choose a date">
+          <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+          <md-datepicker #picker></md-datepicker>
+        </md-form-field>
       </td>
     </tr>
     <tr>

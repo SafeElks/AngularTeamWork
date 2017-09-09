@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MdDatepicker} from '@angular/material';
 
 @Component({
   selector: 'app-plan',
@@ -6,16 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plan.component.css']
 })
 export class PlanComponent implements OnInit {
+  @ViewChild(MdDatepicker) datepicker: MdDatepicker<Date>;
+
   title = 'Tell us about yourself';
   genders = ['Male', 'Female'];
   activities = [
-    'Basal Metabolic Rate (BMR)',
-    'Sedentary - little or no exercise',
-    'Lightly Active - exercise/sports 1-3 times/week',
-    'Moderatetely Active - exercise/sports 3-5 times/week',
-    'Very Active - hard exercise/sports 6-7 times/week',
-    'Extra Active - very hard exercise/sports or physical job',
+    'Little or no exercise',
+    'Lightly Active - 1-3 times/week',
+    'Moderately Active - 3-5 times/week',
+    'Very Active - 6-7 times/week'
   ];
+  minDate = new Date();
+  year = this.minDate.getFullYear();
+  month = this.minDate.getMonth();
+  day = this.minDate.getDate();
+  maxDate = new Date(this.year + 1, this.month, this.day);
+
   constructor() { }
 
   ngOnInit() {

@@ -3,9 +3,11 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdToolbarModule, MdCardModule, MdPaginatorModule, MdTableModule} from '@angular/material';
+import {
+  MdButtonModule, MdToolbarModule, MdCardModule, MdPaginatorModule, MdTableModule,
+  MdDatepickerModule, MdNativeDateModule, MdFormFieldModule
+} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {CdkTableModule} from '@angular/cdk/table';
 import {HomeModule} from './home/home.module';
 import {UsersModule} from './users/users.module';
 import {PlanModule} from './plan/plan.module';
@@ -27,7 +29,6 @@ import {FooterComponent} from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    CdkTableModule,
     BrowserModule,
     HttpModule,
     FormsModule,
@@ -37,9 +38,12 @@ import {FooterComponent} from './footer/footer.component';
     PlanModule,
     MdToolbarModule,
     MdButtonModule,
+    MdFormFieldModule,
     MdCardModule,
     MdPaginatorModule,
     MdTableModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
     RouterModule.forRoot([
       {path: '', redirectTo: '/', pathMatch: 'full'},
     ])
