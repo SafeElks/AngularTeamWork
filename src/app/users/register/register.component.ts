@@ -36,14 +36,16 @@ export class RegisterComponent implements OnInit {
       .map((res) => res.json())
       .subscribe((responseUser: any) => {
         console.log('Congrats, you are registered!');
-        this.message = { text: 'Contrats, you are registered!', status: 'yes'};
+        this.message = { text: 'Contrats, you are registered!', status: 'yes' };
       }, (err) => {
         console.log(err);
         const msg = JSON.parse(err._body);
         this.message = { text: msg.errorMessage, status: 'no' };
       },
       () => {
-        this.appRouter.navigateByUrl('login');
+        setTimeout((router: Router) => {
+          this.appRouter.navigate(['login']);
+      }, 2000);
       });
   }
 }
