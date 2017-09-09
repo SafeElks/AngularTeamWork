@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {MdPaginator} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
-import {DataSource} from '@angular/cdk';
+import {DataSource} from '@angular/cdk/table';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';

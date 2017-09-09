@@ -1,40 +1,60 @@
 <h1>{{title}}</h1>
 
-<form class='example-form'>
+<form *ngIf="showForm === true" class='example-form' #planForm='ngForm' (ngSubmit)='onSubmit()'>
   <table class='example-full-width' cellspacing='0'>
     <tr>
       <td>
-        <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Username' name="username">
+        <md-input-container type="number" class='example-full-width'>
+          <input required mdInput placeholder='Age' name="age" [(ngModel)]="physicalDetails.age">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
-        <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Height(cm)' name="height">
+        <md-radio-group required class="example-radio-group" name="gender" [(ngModel)]="physicalDetails.gender">
+          <md-radio-button [checked]="true" class="example-radio-button" value="true">Male</md-radio-button>
+          <md-radio-button class="example-radio-button" value="false">Female</md-radio-button>
+        </md-radio-group>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container type="number" class='example-full-width'>
+          <input required mdInput placeholder='Height(cm)' name="height" [(ngModel)]="physicalDetails.height">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
-        <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Weight(kgs)' name="weight">
+        <md-input-container type="number" class='example-full-width'>
+          <input required mdInput placeholder='Weight(kgs)' name="weight" [(ngModel)]="physicalDetails.weight">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
-        <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='Target(kgs)' name="target">
+        <md-input-container type="number" class='example-full-width'>
+          <input required mdInput placeholder='Your dream weight(kgs)' name="dreamKg"
+                 [(ngModel)]="physicalDetails.dreamKg">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
-        <md-input-container class='example-full-width'>
-          <input required mdInput placeholder='For how many days?' name="time">
-        </md-input-container>
+        <md-form-field required class="example-full-width">
+          <input [(ngModel)]="physicalDetails.days" [ngModelOptions]="{standalone: true}" mdInput [min]="minDate" [max]="maxDate" [mdDatepicker]="picker" placeholder="Choose a date">
+          <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+          <md-datepicker #picker></md-datepicker>
+        </md-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-select placeholder="Activity" name="activity" [(ngModel)]="physicalDetails.activity">
+          <md-option *ngFor="let activity of activities" [value]="activity.value">
+            {{activity.type}}
+          </md-option>
+        </md-select>
       </td>
     </tr>
     <tr>
@@ -44,3 +64,5 @@
     </tr>
   </table>
 </form>
+<div *ngIf="showForm === false">You need to consume {{calories}}kcal per day </div>
+<div *ngIf="showForm === false"><a [routerLink]="['/register']">REGISTER</a> for all our features or <button (click)="goBack()">GO BACK</button></div>
