@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MdDatepicker} from '@angular/material';
 import {PhysicalDetails} from '../models/physicalDetails.model';
 import {PlanService} from '../services/plan.service';
-import {NgForm} from '@angular/forms';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-plan',
@@ -13,6 +13,7 @@ export class PlanComponent implements OnInit {
   @ViewChild(MdDatepicker) datepicker: MdDatepicker<Date>;
   physicalDetails: PhysicalDetails = new PhysicalDetails();
   data = new PhysicalDetails();
+  showForm = true;
   title = 'Tell us about yourself';
   activities = [
     {type: 'Little or no exercise', value: 1.2},
@@ -26,8 +27,9 @@ export class PlanComponent implements OnInit {
   day = this.d.getDate();
   minDate = new Date(this.year, this.month, this.day + 1);
   maxDate = new Date(this.year + 1, this.month, this.day);
+  calories: number;
 
-  constructor(private planService: PlanService) {
+  constructor(private planService: PlanService, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -37,12 +39,24 @@ export class PlanComponent implements OnInit {
     const days = Math.ceil((((new Date(this.physicalDetails.days)).getTime()) - (new Date().getTime())) / (1000 * 3600 * 24));
     Object.assign(this.data, this.physicalDetails);
     this.data.days = days;
+    console.log(this.data);
     this.planService.getCaloriesPerDay(this.data)
       .map((res) => res.json())
-      .subscribe((calories: any) => {
-        console.log(calories);
+      .subscribe((response: any) => {
+        this.calories = response.calories;
+        if (this.calories > 1000 && this.calories < 4000) {
+          this.showForm = false;
+          this.authService.savePersonalData(this.physicalDetails);
+        } else {
+          console.log('It is impossible, please select more days');
+        }
       }, (err) => {
         console.log(err);
       });
+  }
+
+  goBack(): void {
+    this.authService.clearPersonalData();
+    this.showForm = true;
   }
 }

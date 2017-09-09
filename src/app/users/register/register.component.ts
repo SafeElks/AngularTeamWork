@@ -29,6 +29,15 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const personalData = this.authService.getPersonalData();
+
+    this.user.gender = personalData.gender;
+    this.user.weight = personalData.weight;
+    this.user.height = personalData.height;
+    this.user.age = personalData.age;
+    this.user.dreamKg = personalData.dreamKg;
+
+    this.authService.clearPersonalData();
     this.userService.registerUser(this.user)
       .map((res) => res.json())
       .subscribe((responseUser: any) => {

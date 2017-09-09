@@ -11,7 +11,10 @@ export class ProfileComponent implements OnInit {
   private id: string;
   username: string;
   email: string;
-  profileInfo: string;
+  age: string;
+  height: string;
+  weight: string;
+  gender: string;
 
   constructor(
     private userService: UserService,
@@ -25,7 +28,10 @@ export class ProfileComponent implements OnInit {
       .subscribe((user: any) => {
         this.username = user.name;
         this.email = user.email;
-        this.profileInfo = user.info;
+        this.age = user.age;
+        this.height = user.height;
+        this.weight = user.weight;
+        this.gender = user.gender === 'true' ? 'Male' : 'Female';
       });
   }
 

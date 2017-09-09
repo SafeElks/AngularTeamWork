@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, Response } from '@angular/http';
+import {Http, Headers, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {PhysicalDetails} from '../models/physicalDetails.model';
 
 @Injectable()
 export class PlanService {
-  private headers = new Headers({ 'Content-Type': 'application/json' });
+  private headers = new Headers({'Content-Type': 'application/json'});
   private caloriesPerDayUrl = '/api/caloriesPerDay';
+
 
   constructor(private http: Http) {
   }
@@ -16,4 +17,5 @@ export class PlanService {
       headers: this.headers
     });
   }
+
 }

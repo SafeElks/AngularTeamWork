@@ -1,9 +1,9 @@
 export class PhysicalDetails {
-  weight: number;
-  height: number;
-  age: number;
-  gender: boolean;
-  activity: number;
+  weight: string;
+  height: string;
+  age: string;
+  gender: string;
+  activity: string;
   days: number;
-  dreamKg: number;
+  dreamKg: string;
 }
