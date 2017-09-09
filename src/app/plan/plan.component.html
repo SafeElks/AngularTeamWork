@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 
-<form class='example-form' #planForm='ngForm' (ngSubmit)='onSubmit()'>
+<form *ngIf="showForm === true" class='example-form' #planForm='ngForm' (ngSubmit)='onSubmit()'>
   <table class='example-full-width' cellspacing='0'>
     <tr>
       <td>
@@ -12,8 +12,8 @@
     <tr>
       <td>
         <md-radio-group required class="example-radio-group" name="gender" [(ngModel)]="physicalDetails.gender">
-          <md-radio-button [checked]="true" class="example-radio-button" [value]="true">Male</md-radio-button>
-          <md-radio-button class="example-radio-button" [value]="false">Female</md-radio-button>
+          <md-radio-button [checked]="true" class="example-radio-button" value="true">Male</md-radio-button>
+          <md-radio-button class="example-radio-button" value="false">Female</md-radio-button>
         </md-radio-group>
       </td>
     </tr>
@@ -64,3 +64,5 @@
     </tr>
   </table>
 </form>
+<div *ngIf="showForm === false">You need to consume {{calories}}kcal per day </div>
+<div *ngIf="showForm === false"><a [routerLink]="['/register']">REGISTER</a> for all our features or <button (click)="goBack()">GO BACK</button></div>

@@ -18,9 +18,12 @@ const usersController = (data) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        info: 'No profile info!'
+        weight: +req.body.weight,
+        height: +req.body.height,
+        age: +req.body.age,
+        gender: req.body.gender,
+        dreamKg: +req.body.dreamKg
       };
-
       return data.users.create(user)
         .then(() => {
           return res
