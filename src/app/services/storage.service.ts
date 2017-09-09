@@ -7,11 +7,13 @@ export class StorageService {
   constructor(private localStorageService: LocalStorageService) {
   }
 
-  add(item: string, value: any) {
-    this.localStorageService.add(item, value);
+  add(item: string, value: any): void {
+    // this.localStorageService.set(item, value);
+    localStorage.setItem(item, value);
   }
 
-  get(key: string) {
-    this.localStorageService.get(key);
+  get(key: string): any {
+    // this.localStorageService.get(key);
+    return localStorage.getItem(key);
   }
 }
