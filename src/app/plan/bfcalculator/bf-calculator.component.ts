@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 
 @Component({
   selector: 'app-bf-calculator',
@@ -15,5 +15,21 @@ export class BfCalculatorComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+}
+
+@Pipe({name: 'changeMetrics'})
+export class ChangeMetrics implements PipeTransform {
+  transform(value: string): string {
+    let newStr: string = value + ' (cm)';
+    return newStr;
+  }
+}
+
+@Pipe({name: 'changeUS'})
+export class ChangeUS implements PipeTransform {
+  transform(value: string): string {
+    let newStr: string = value + ' (feet inches)';
+    return newStr;
   }
 }

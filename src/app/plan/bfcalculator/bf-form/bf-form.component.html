@@ -11,28 +11,28 @@
     <tr>
       <td>
         <md-input-container class='full-width'>
-          <input required mdInput placeholder='Username' name="username" [(ngModel)]="height">
+          <input required mdInput [placeholder]='heightPlaceholder' name="height" [(ngModel)]="height">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container class='full-width'>
-          <input required mdInput placeholder='Height(cm)' name="height" [(ngModel)]="neck">
+          <input required mdInput [placeholder]='neckPlaceholder' name="neck" [(ngModel)]="neck">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container class='full-width'>
-          <input required mdInput placeholder='Weight(kgs)' name="weight" [(ngModel)]="waist">
+          <input required mdInput [placeholder]='waistPlaceholder' name="waist" [(ngModel)]="waist">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container class='full-width'>
-          <input required mdInput placeholder='Target(kgs)' name="target" [(ngModel)]="hip">
+          <input required mdInput [placeholder]='hipPlaceholder' name="hip" [(ngModel)]="hip">
         </md-input-container>
       </td>
     </tr>

@@ -8,7 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MainInfoComponent} from './main/main-info.component';
-import {BfCalculatorComponent} from './bfcalculator/bf-calculator.component';
+import {BfCalculatorComponent, ChangeUS, ChangeMetrics} from './bfcalculator/bf-calculator.component';
 import {PlanRouterModule} from './plan-router.module';
 import {BfFormComponent} from "./bfcalculator/bf-form/bf-form.component";
 
@@ -26,7 +26,11 @@ import {BfFormComponent} from "./bfcalculator/bf-form/bf-form.component";
     MdProgressSpinnerModule,
     BrowserAnimationsModule
   ],
-  declarations: [MainInfoComponent, BfCalculatorComponent, BfFormComponent]
+  declarations: [MainInfoComponent,
+    BfCalculatorComponent,
+    BfFormComponent,
+    ChangeMetrics,
+    ChangeUS]
 })
 export class PlanModule {
 }
