@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from "@angular/http";
-import {Observable} from 'rxjs/Observable';
 import {BodyFatInfo} from "../plan/bfcalculator/bf-form/bf-form.component";
 import {Units} from "../plan/bfcalculator/bf-calculator.component";
+
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class BfCalculatorService {
@@ -16,12 +17,12 @@ export class BfCalculatorService {
     } else if (units === Units.Metrics) {
       return this.getBfPercentageMetrics(bfInfo);
     } else {
-      console.log('Unsupported metric system');
+      throw Error('Unsupported metric system');
     }
   }
 
   private getBfPercentageUS(bfInfo: BodyFatInfo): Observable<Response> {
-    const gen = Boolean(bfInfo.gender);
+    const gen = bfInfo.gender === 'true';
     const [heightFeet, heightInches] = bfInfo.height.split(' ');
     const [neckFeet, neckInches] = bfInfo.neck.split(' ');
     const [waistFeet, waistInches] = bfInfo.waist.split(' ');
@@ -29,11 +30,13 @@ export class BfCalculatorService {
 
     const corsUrl = `https://cors-anywhere.herokuapp.com/`;
     const queryUrl = `http://www.calculator.net/body-fat-calculator.html?ctype=standard&csex=${gen ? 'm' : 'f'}&cheightfeet=${heightFeet}&cheightinch=${heightInches}&cneckfeet=${neckFeet}&cneckinch=${neckInches}&cwaistfeet=${waistFeet}&cwaistinch=${waistInches}&chipfeet=${hipFeet}&chipinch=${hipInches}`;
+
+    // console.log(`Sent GET to ${queryUrl}`);
     return this.http.get(corsUrl + queryUrl);
   }
 
   private getBfPercentageMetrics(bfInfo: BodyFatInfo): Observable<Response> {
-    const gen = Boolean(bfInfo.gender);
+    const gen = bfInfo.gender === 'true';
     const height = bfInfo.height;
     const neck = bfInfo.neck;
     const waist = bfInfo.waist;
@@ -41,6 +44,8 @@ export class BfCalculatorService {
 
     const corsUrl = `https://cors-anywhere.herokuapp.com/`;
     const queryUrl = `http://www.calculator.net/body-fat-calculator.html?ctype=metric&csex=${gen ? 'm' : 'f'}&cheightmeter=${height}&cneckmeter=${neck}&cwaistmeter=${waist}&chipmeter=${hip}`;
+
+    // console.log(`Sent GET to ${queryUrl}`);
     return this.http.get(corsUrl + queryUrl);
   }
 }

@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {StorageService} from "../../../services/storage.service";
 import {BfCalculatorService} from "../../../services/bf-calculator.service";
-import {Units} from "../bf-calculator.component";
 
 @Component({
   selector: 'app-bf-form',
@@ -20,19 +19,14 @@ export class BfFormComponent implements OnInit {
   @Input() neckPlaceholder: number;
   @Input() waistPlaceholder: number;
   @Input() hipPlaceholder: number;
+  @Input() unitSystem: number;
+
+  @Output() onBfResult = new EventEmitter<string>();
+  @Output() onProgress = new EventEmitter<boolean>();
 
   private bodyFatKey = "body-fat-data";
-  @Input() unitSystem = Units.Other;
 
-  get() {
-    return this.unitSystem;
-  }
-
-  set (value) {
-      this.unitSystem = value;
-  }
-
-  constructor(private storage: StorageService, private calculatorService : BfCalculatorService, private router: Router) {
+  constructor(private storage: StorageService, private calculatorService: BfCalculatorService, private router: Router) {
 
   }
 
@@ -48,12 +42,17 @@ export class BfFormComponent implements OnInit {
     const data = JSON.stringify(form);
     this.storage.add(this.bodyFatKey + this.unitSystem, data);
 
+    this.onProgress.emit(true);
     const res = this.calculatorService
-      .getBfPercentage(form, Units.Metrics)
+      .getBfPercentage(form, this.unitSystem)
       .subscribe((response: any) => {
-        console.log(response._body);
+        const resBody = response._body;
+        const bfResult = this.extractBfPercentage(resBody);
+        this.onBfResult.emit(bfResult);
+      }, err => {
+        console.log(err);
+        this.onProgress.emit(false);
       });
-
 
     // nav to calorie calculator route
     // this.router.navigate(['']);
@@ -70,6 +69,18 @@ export class BfFormComponent implements OnInit {
         this.gender = bfInfo.gender;
       }
     }
+  }
+
+  private extractBfPercentage(data: string) {
+    const target = `<b>body fat =`;
+    const resStartIndex = data.indexOf(target);
+    if (resStartIndex === -1) {
+      console.log('Error, couldn\'t get body fat result');
+      return '0%';
+    }
+    const resEndIndex = data.indexOf('</b', resStartIndex + target.length);
+    const result = data.substring(resStartIndex + target.length, resEndIndex);
+    return result;
   }
 }
 

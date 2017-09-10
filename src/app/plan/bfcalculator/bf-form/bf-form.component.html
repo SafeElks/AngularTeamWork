@@ -1,9 +1,9 @@
-<form class='bf-form' #f="ngForm" (ngSubmit)="onSubmit(f.value)"  >
+<form class='bf-form' #f="ngForm" (ngSubmit)="onSubmit(f.value)">
   <table class='bf-form-table full-width' cellspacing='0'>
     <tr>
       <td>
         <md-radio-group required class="gender-radio-group" name="gender" [(ngModel)]="gender">
-          <md-radio-button [checked]="true" class="gender-radio-button" value="true">Male</md-radio-button>
+          <md-radio-button class="gender-radio-button" value="true">Male</md-radio-button>
           <md-radio-button class="bf-radio-button" value="false">Female</md-radio-button>
         </md-radio-group>
       </td>

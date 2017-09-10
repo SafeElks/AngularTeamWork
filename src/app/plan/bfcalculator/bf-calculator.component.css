@@ -13,28 +13,33 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .flex-item {
   max-width: 50%;
 }
 
-.flex-item-top {
-  align-self: flex-start;
-}
+/*.flex-item-top {*/
+  /*align-self: flex-start;*/
+/*}*/
 
 .result {
+  position: absolute;
+  top:0;
+  left:0;
   text-align: center;
   font-size: x-large;
   color: greenyellow;
+  min-width: 50%;
 }
 
-.animate-enter {
-  -webkit-transition: 1s linear all; /* Chrome */
-  transition: 1s linear all;
-  opacity: 0;
-}
+/*.animate-enter {*/
+  /*-webkit-transition: 1s linear all; !* Chrome *!*/
+  /*transition: 1s linear all;*/
+  /*opacity: 0;*/
+/*}*/
 
-.animate-enter.animate-enter-active {
-  opacity: 1;
-}
+/*.animate-enter.animate-enter-active {*/
+  /*opacity: 1;*/
+/*}*/

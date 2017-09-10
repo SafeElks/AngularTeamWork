@@ -8,13 +8,24 @@ import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 export class BfCalculatorComponent implements OnInit {
   title = 'Body Fat Calculator';
   inProgress = false;
-  result = 0;
+  result = '0%';
 
   constructor() {
   }
 
   ngOnInit() {
 
+  }
+
+  onBfResult(res: string) {
+    // console.log('Result: ' + res);
+    this.result = res;
+    this.inProgress = false;
+  }
+
+  onProgress(res: boolean) {
+    // console.log('Result: ' + res);
+    this.inProgress = res;
   }
 }
 
@@ -35,7 +46,7 @@ export class ChangeUS implements PipeTransform {
 }
 
 export enum Units {
-  Metrics = 1,
-  US = 2,
-  Other = 3
+  Metrics = 0,
+  US = 1,
+  Other = 2
 }
