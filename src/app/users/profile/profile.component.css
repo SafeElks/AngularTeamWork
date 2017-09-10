@@ -4,6 +4,24 @@
   margin-top: 60px;
 }
 
+@media (max-width: 640px) {
+  .example-card {
+    width: 70%;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 800px) {
+  .example-card {
+    width: 55%;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .example-card {
+    width: 40%;
+  }
+}
+
 .example-header-image {
   background-size: cover;
 }

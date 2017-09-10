@@ -2,8 +2,9 @@
 <div class="content">
   <div *ngFor="let logo of logos; let i = index">
     <div *ngIf="i % 2" class='content-row'>
+      <h2 *ngIf="small">{{logo.text}}</h2>
       <img src="{{logo.logoUrl}}" alt="logo">
-      <h2>{{logo.text}}</h2>
+      <h2 *ngIf="!small">{{logo.text}}</h2>
     </div>
     <div *ngIf="!(i % 2)" class='content-row'>
       <h2>{{logo.text}}</h2>

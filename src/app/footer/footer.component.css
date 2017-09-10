@@ -2,6 +2,7 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    min-width: 480px;
     height: 68px;
     background-color: #262626;
     font-family: 'Roboto';

@@ -13,8 +13,10 @@ export class HomeComponent implements OnInit {
   }, {
     logoUrl: '../../assets/images/exercise.png', text: 'Exercise'
   }, {
-    logoUrl: '../../assets/images/super.png', text: 'Become Superhuman'
+    logoUrl: '../../assets/images/super.png', text: 'Superman'
   }];
+
+  small = window.innerWidth < 425 ? true : false;
   constructor(private appService: HomeService) { }
 
   ngOnInit(): void {
@@ -23,5 +25,6 @@ export class HomeComponent implements OnInit {
       .subscribe((response: any) => {
         this.info = response.info;
       });
+      console.log(this.small);
   }
 }
