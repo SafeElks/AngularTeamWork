@@ -11,7 +11,7 @@ export class BfCalculatorService {
   constructor(private http: Http) {
   }
 
-  getBfPercentage(bfInfo: BodyFatInfo, units: Units): Observable<Response> {
+  getBfPercentage(bfInfo: BodyFatInfo, units: Units): Observable<any> {
     if (units === Units.US) {
       return this.getBfPercentageUS(bfInfo);
     } else if (units === Units.Metrics) {
@@ -21,7 +21,7 @@ export class BfCalculatorService {
     }
   }
 
-  private getBfPercentageUS(bfInfo: BodyFatInfo): Observable<Response> {
+  private getBfPercentageUS(bfInfo: BodyFatInfo): Observable<any> {
     const gen = bfInfo.gender === 'true';
     try {
       const [heightFeet, heightInches] = bfInfo.height.split(' ');
@@ -34,11 +34,11 @@ export class BfCalculatorService {
       // console.log(`Sent GET to ${queryUrl}`);
       return this.http.get(corsUrl + queryUrl);
     } catch (e) {
-      return Observable.throw(e);
+      return Observable.of('Format error');
     }
   }
 
-  private getBfPercentageMetrics(bfInfo: BodyFatInfo): Observable<Response> {
+  private getBfPercentageMetrics(bfInfo: BodyFatInfo): Observable<any> {
     const gen = bfInfo.gender === 'true';
     const height = bfInfo.height;
     const neck = bfInfo.neck;

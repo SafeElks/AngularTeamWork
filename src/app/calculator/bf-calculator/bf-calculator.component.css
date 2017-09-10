@@ -24,14 +24,6 @@ h1 {
   align-self: flex-end;
 }
 
-.show{
-  opacity: 1 !important;
-}
-.step{
-  opacity: 0;
-  transition: .5s ease-in-out all;
-}
-
 .bf-panel {
   position: absolute;
   top:0;
