@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {AuthService} from '../../services/auth.service';
-import {Http, Response} from '@angular/http';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
@@ -27,9 +27,9 @@ export class ProfileComponent implements OnInit {
   inProgress: boolean;
 
   constructor(private userService: UserService,
-              private authService: AuthService,
-              private http: Http,
-              private el: ElementRef) {
+    private authService: AuthService,
+    private http: Http,
+    private el: ElementRef) {
   }
 
   ngOnInit() {
@@ -50,9 +50,8 @@ export class ProfileComponent implements OnInit {
   private clearMessage() {
     setTimeout(() => {
       this.message = '';
-    }, 1500);
+    }, 2500);
   }
-
   upload() {
     const inputEl: HTMLInputElement = this.inputEl;
     const fileCount: number = inputEl.files.length;
@@ -63,16 +62,16 @@ export class ProfileComponent implements OnInit {
       this.http.post('/api/upload', formData)
         .map((res: Response) => res.json())
         .subscribe(() => {
-            this.inProgress = false;
-            this.uploaded = true;
-            this.message = {text: 'Successfully uploaded', status: 'yes'};
-            this.clearMessage();
-          },
-          (error) => {
-            this.inProgress = false;
-            this.message = {text: error, status: 'no'};
-            this.clearMessage();
-          });
+          this.inProgress = false;
+          this.uploaded = true;
+          this.message = { text: 'Successfully uploaded', status: 'yes' };
+          this.clearMessage();
+        },
+        (error) => {
+          this.inProgress = false;
+          this.message = { text: error, status: 'no' };
+          this.clearMessage();
+        });
     }
   }
 
@@ -95,7 +94,7 @@ export class ProfileComponent implements OnInit {
     this.userService.updateAge(value)
       .map((res) => res.json())
       .subscribe((response: any) => {
-        this.message = {text: response.msg, status: 'yes'};
+        this.message = { text: response.msg, status: 'yes' };
         this.clearMessage();
       });
   }
@@ -104,7 +103,7 @@ export class ProfileComponent implements OnInit {
     this.userService.updateHeight(value)
       .map((res) => res.json())
       .subscribe((response: any) => {
-        this.message = {text: response.msg, status: 'yes'};
+        this.message = { text: response.msg, status: 'yes' };
         this.clearMessage();
       });
   }
@@ -113,7 +112,7 @@ export class ProfileComponent implements OnInit {
     this.userService.updateKg(value)
       .map((res) => res.json())
       .subscribe((response: any) => {
-        this.message = {text: response.msg, status: 'yes'};
+        this.message = { text: response.msg, status: 'yes' };
         this.clearMessage();
       });
   }

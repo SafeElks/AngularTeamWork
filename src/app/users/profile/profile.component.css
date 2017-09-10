@@ -39,7 +39,7 @@
 .inputfile + label {
   width: 100%;
   padding: 5px;
-  margin: 5px 0;
+  margin: 5px 0 10px 0;
   background-color: #F1F1F1;
   display: inline-block;
 }
@@ -68,7 +68,7 @@
   float: right;
   border: none;
   padding: 5px;
-  margin: 0 0 5px 5px;
+  margin: 0 0 10px 5px;
   background-color: #F1F1F1;
   outline: none;
   text-align: center;
@@ -79,4 +79,8 @@
 }
 .upload-button:active {
   background-color: #D2D2D2;
+}
+
+md-progress-bar { 
+  margin-bottom: 10px;
 }
