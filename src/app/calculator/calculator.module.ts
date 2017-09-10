@@ -2,9 +2,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import {
   MdButtonModule, MdCardModule, MdExpansionModule, MdInputModule, MdProgressSpinnerModule,
-  MdRadioModule,
-  MdTableModule,
-  MdTabsModule
+  MdRadioModule, MdTableModule, MdTabsModule
 } from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
@@ -14,6 +12,7 @@ import {BfFormComponent} from './bf-calculator/bf-form/bf-form.component';
 import {BfTableComponent} from './bf-calculator/bf-table/bf-table.component';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CalculatorRouterModule} from './calculator-router.module';
+import {UsersModule} from '../users/users.module';
 
 @NgModule({
   imports: [
@@ -30,14 +29,17 @@ import {CalculatorRouterModule} from './calculator-router.module';
     MdProgressSpinnerModule,
     MdExpansionModule,
     MdTableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    UsersModule
   ],
   declarations: [
     BfCalculatorComponent,
     BfFormComponent,
     BfTableComponent,
     ChangeMetrics,
-    ChangeUS]
+    ChangeUS
+  ]
 })
 
-export class CalculatorModule { }
+export class CalculatorModule {
+}

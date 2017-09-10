@@ -9,6 +9,10 @@ export class BfCalculatorComponent implements OnInit {
   title = 'Body Fat Calculator';
   inProgress = false;
   result = '0%';
+  message: ErrorMessage;
+  error: boolean;
+  success: boolean;
+  hidden: boolean;
 
   constructor() {
   }
@@ -18,14 +22,17 @@ export class BfCalculatorComponent implements OnInit {
   }
 
   onBfResult(res: string) {
-    // console.log('Result: ' + res);
     this.result = res;
     this.inProgress = false;
   }
 
   onProgress(res: boolean) {
-    // console.log('Result: ' + res);
     this.inProgress = res;
+  }
+
+  onError(msg: ErrorMessage) {
+    this.message = msg;
+    this.error = true;
   }
 }
 
@@ -49,4 +56,9 @@ export enum Units {
   Metrics = 0,
   US = 1,
   Other = 2
+}
+
+export interface ErrorMessage {
+  text: string;
+  status: string;
 }
