@@ -2,6 +2,10 @@
 
   <md-table #table [dataSource]="dataSource">
 
+    <ng-container cdkColumnDef="photo">
+      <md-header-cell *cdkHeaderCellDef> Photo</md-header-cell>
+      <md-cell *cdkCellDef="let row"><img src="{{row.photo.secure_url}}" alt=""></md-cell>
+    </ng-container>
     <!-- Name Column -->
     <ng-container cdkColumnDef="userName">
       <md-header-cell *cdkHeaderCellDef> Name</md-header-cell>
