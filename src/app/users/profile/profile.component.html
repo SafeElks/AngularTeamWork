@@ -14,9 +14,9 @@
   <img *ngIf="change==false" md-card-image [src]="photo">
   <img *ngIf="change==true" md-card-image [src]="url">
   <md-card-content>
-    <div>Age: {{age}}</div>
-    <div>Height: {{height}}</div>
-    <div>Weight: {{weight}}</div>
+    <div>Age: <span #a contenteditable='' (blur)="saveAge(a.innerHTML)">{{age}}</span></div>
+    <div>Height: <span #h contenteditable='' (blur)="saveHeight(h.innerHTML)">{{height}}</span></div>
+    <div>Weight: <span #w contenteditable='' (blur)="saveWeight(w.innerHTML)">{{weight}}</span></div>
     <div>Gender: {{gender}}</div>
   </md-card-content>
 </md-card>

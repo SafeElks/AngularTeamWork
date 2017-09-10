@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   photo: string;
   url: string;
   change = false;
+
   constructor(private userService: UserService,
               private authService: AuthService,
               private http: Http,
@@ -41,6 +42,7 @@ export class ProfileComponent implements OnInit {
         this.gender = user.gender === 'true' ? 'Male' : 'Female';
       });
   }
+
   upload() {
     const inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
     const fileCount: number = inputEl.files.length;
@@ -67,9 +69,16 @@ export class ProfileComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
-  saveEditable(value) {
-    // call to http service
+
+  saveAge(value) {
     console.log(value);
   }
 
+  saveHeight(value) {
+    console.log(value);
+  }
+
+  saveWeight(value) {
+    console.log(value);
+  }
 }
