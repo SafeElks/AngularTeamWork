@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {BfFormComponent} from './bf-form.component';
+import { BfTableComponent } from './bf-table.component';
 
-describe('BfFormComponent', () => {
-  let component: BfFormComponent;
-  let fixture: ComponentFixture<BfFormComponent>;
+describe('BfTableComponent', () => {
+  let component: BfTableComponent;
+  let fixture: ComponentFixture<BfTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BfFormComponent ]
+      declarations: [ BfTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BfFormComponent);
+    fixture = TestBed.createComponent(BfTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,10 +10,10 @@ h1 {
 }
 
 .flex-container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .flex-item {
@@ -24,14 +24,25 @@ h1 {
   /*align-self: flex-start;*/
 /*}*/
 
-.result {
+.bf-panel {
   position: absolute;
   top:0;
   left:0;
   text-align: center;
+  min-width: 50%;
+}
+
+/*.bf-panel:hover .result-label {*/
+  /*color: darkolivegreen;*/
+/*}*/
+
+.result-label {
   font-size: x-large;
   color: greenyellow;
-  min-width: 50%;
+}
+
+.spinner {
+  z-index: 9999;
 }
 
 /*.animate-enter {*/

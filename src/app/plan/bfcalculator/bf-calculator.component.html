@@ -24,9 +24,23 @@
     </md-tab-group>
 
     <div class="col col-3 flex-container">
-      <md-card class="result">
-        {{result}}
-      </md-card>
+
+      <md-expansion-panel class="bf-panel">
+        <md-expansion-panel-header>
+          <md-panel-title class="result-label">
+            {{result}}
+          </md-panel-title>
+          <md-panel-description>
+          </md-panel-description>
+        </md-expansion-panel-header>
+
+        <app-bf-table></app-bf-table>
+
+      </md-expansion-panel>
+
+      <!--<md-card class="result">-->
+        <!--{{result}}-->
+      <!--</md-card>-->
 
       <md-spinner class="spinner flex-item" [hidden]="!inProgress"></md-spinner>
     </div>
