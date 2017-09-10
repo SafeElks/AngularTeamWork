@@ -35,15 +35,15 @@
     <tr>
       <td>
         <md-input-container type="number" class='example-full-width'>
-          <input required mdInput placeholder='Your dream weight(kgs)' name="dreamKg"
-                 [(ngModel)]="physicalDetails.dreamKg" (focus)="clearMessage()">
+          <input required mdInput placeholder='Your dream weight(kgs)' name="dreamKg" [(ngModel)]="physicalDetails.dreamKg" (focus)="clearMessage()">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-form-field class="example-full-width">
-          <input required [(ngModel)]="physicalDetails.days" [ngModelOptions]="{standalone: true}" mdInput [min]="minDate" [max]="maxDate" [mdDatepicker]="picker" placeholder="Choose a date" (focus)="clearMessage()">
+          <input required [(ngModel)]="physicalDetails.days" [ngModelOptions]="{standalone: true}" mdInput [min]="minDate" [max]="maxDate"
+            [mdDatepicker]="picker" placeholder="Choose a date" (focus)="clearMessage()">
           <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
           <md-datepicker #picker></md-datepicker>
         </md-form-field>
@@ -65,8 +65,6 @@
     </tr>
   </table>
 </form>
-<div *ngIf="showForm === false" class="results">
-<p>You need to consume <span class="kcal">{{calories}} KCAL</span> per day</p>
-<p>For all our features</p>
-<p><a class="btn-register" [routerLink]="['/register']">REGISTER</a> or <button class="btn-back" (click)="goBack()">GO BACK</button></p>
-</div>
+<p *ngIf="showForm === false">You need to consume <span class="kcal">{{calories}} KCAL</span> per day</p>
+<p *ngIf="showForm === false">For all our features</p>
+<p *ngIf="showForm === false"><a class="btn-register" [routerLink]="['/register']">REGISTER</a><span class="or"> or </span><button class="btn-back" (click)="goBack()">GO BACK</button></p>

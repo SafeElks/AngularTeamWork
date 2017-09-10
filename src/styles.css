@@ -10,15 +10,8 @@ html {
     min-height: 100%;
 }
 
-/* default .loading styles, .loading should be invisible, opacity: 0, z-index: -1 */
-.loading {
-    opacity: 0;
-    transition: opacity .8s ease-in-out;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: #000;
-    z-index: -1;
-}
+body {
+    min-width:480px; /* suppose you want minimun width of 1000px */
+    width: auto !important;  /* Firefox will set width as auto */
+    width:480px;             /* As IE ignores !important it will set width as 1000px; */
+ }

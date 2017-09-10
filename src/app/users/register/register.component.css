@@ -1,6 +1,15 @@
-.example-form {
-  width: 30%;
-  margin: 0 auto;
+@media (max-width: 640px) {
+  .example-form {
+      width: 50%;
+      margin: 0 auto;
+  }
+}
+
+@media (min-width: 640px) {
+  .example-form {
+      width: 30%;
+      margin: 0 auto;
+  }
 }
 
 .example-full-width {

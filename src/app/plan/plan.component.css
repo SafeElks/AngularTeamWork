@@ -1,7 +1,17 @@
-.example-form {
-    width: 30%;
-    margin: 0 auto;
+@media (max-width: 640px) {
+    .example-form {
+        width: 50%;
+        margin: 0 auto;
+    }
 }
+
+@media (min-width: 640px) {
+    .example-form {
+        width: 30%;
+        margin: 0 auto;
+    }
+}
+
 
 .example-full-width {
     width: 100%;
@@ -22,13 +32,8 @@ md-select {
     margin-bottom: 40px;
 }
 
-.results {
-    width: 50%;
-    margin: 0 auto;
-    padding: 50px; 
-    background-color: #EBEBEB;
+p {
     text-align: center;
-    overflow: hidden;
 }
 
 .btn-register {
@@ -74,4 +79,8 @@ md-select {
 
 .kcal {
     text-decoration: underline
+}
+
+.or {
+    display: inline-block;
 }
