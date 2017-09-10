@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>{{title}}</h1>
+  <div class="row">
+
+    <md-tab-group class="col col-9">
+      <md-tab label="US Units">
+        <app-bf-form (onBfResult)="onBfResult($event)"
+                     (onProgress)="onProgress($event)"
+                     [unitSystem]="1"
+                     [heightPlaceholder]="'height' | changeUS"
+                     [neckPlaceholder]="'neck' | changeUS"
+                     [waistPlaceholder]="'waist' | changeUS"
+                     [hipPlaceholder]="'hip' | changeUS"></app-bf-form>
+      </md-tab>
+      <md-tab label="Metric Units">
+        <app-bf-form (onBfResult)="onBfResult($event)"
+                     (onProgress)="onProgress($event)"
+                     [unitSystem]="0"
+                     [heightPlaceholder]="'height' | changeMetrics"
+                     [neckPlaceholder]="'neck' | changeMetrics"
+                     [waistPlaceholder]="'waist' | changeMetrics"
+                     [hipPlaceholder]="'hip' | changeMetrics"></app-bf-form>
+      </md-tab>
+    </md-tab-group>
+
+    <div class="col col-3 flex-container">
+
+      <md-expansion-panel class="bf-panel">
+        <md-expansion-panel-header>
+          <md-panel-title class="result-label">
+            {{result}}
+          </md-panel-title>
+          <md-panel-description>
+          </md-panel-description>
+        </md-expansion-panel-header>
+
+        <app-bf-table></app-bf-table>
+
+      </md-expansion-panel>
+
+      <!--<md-card class="result">-->
+        <!--{{result}}-->
+      <!--</md-card>-->
+
+      <md-spinner class="spinner flex-item" [hidden]="!inProgress"></md-spinner>
+    </div>
+  </div>
+</div>

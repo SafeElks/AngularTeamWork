@@ -21,7 +21,9 @@ import {UserService} from './services/user.service';
 import {HomeService} from './services/home.service';
 import {FooterComponent} from './footer/footer.component';
 import {PlanService} from './services/plan.service';
-
+import {CalculatorModule} from './calculator/calculator.module';
+import {BfCalculatorService} from './services/bf-calculator.service';
+import {StorageService} from './services/storage.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import {PlanService} from './services/plan.service';
     HomeModule,
     UsersModule,
     PlanModule,
+    CalculatorModule,
     MdToolbarModule,
     MdButtonModule,
     MdFormFieldModule,
@@ -55,7 +58,9 @@ import {PlanService} from './services/plan.service';
     AuthService,
     UserService,
     HomeService,
-    PlanService
+    PlanService,
+    StorageService,
+    BfCalculatorService
   ]
 })
 export class AppModule {

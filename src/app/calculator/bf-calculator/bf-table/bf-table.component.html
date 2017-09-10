@@ -1,0 +1,22 @@
+<div class="bf-table-container mat-elevation-z1">
+  <md-table #table [dataSource]="dataSource">
+
+    <ng-container cdkColumnDef="Description">
+      <md-header-cell *cdkHeaderCellDef> Description </md-header-cell>
+      <md-cell *cdkCellDef="let element"> {{element.description}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Women">
+      <md-header-cell *cdkHeaderCellDef> Women </md-header-cell>
+      <md-cell *cdkCellDef="let element"> {{element.women}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Men">
+      <md-header-cell *cdkHeaderCellDef> Men </md-header-cell>
+      <md-cell *cdkCellDef="let element"> {{element.men}} </md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>
