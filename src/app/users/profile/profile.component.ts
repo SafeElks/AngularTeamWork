@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
   weight: string;
   gender: string;
   photo: string;
+  url: string;
+  change = false;
   constructor(private userService: UserService,
               private authService: AuthService,
               private http: Http,
@@ -50,6 +52,19 @@ export class ProfileComponent implements OnInit {
           alert('Successfully uploaded');
         },
         (error) => alert(error));
+    }
+  }
+
+  readUrl(event) {
+    this.change = true;
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      /* tslint:disable-next-line */
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
     }
   }
   saveEditable(value) {

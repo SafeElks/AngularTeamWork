@@ -5,12 +5,14 @@
     <md-card-subtitle>{{email}}</md-card-subtitle>
   </md-card-header>
   <!-- File input for upload without using the plugin. -->
-  <input id="photo" type="file" />
+  <input id="photo" type="file" (change)="readUrl($event)"/>
   <!-- button to trigger the file upload when submitted -->
   <button type="button" (click)="upload()">
-    Upload with method 2
+    Upload
   </button>
-  <img md-card-image [src]="photo">
+  <button *ngIf="change==true" (click)="change=false">Cancel</button>
+  <img *ngIf="change==false" md-card-image [src]="photo">
+  <img *ngIf="change==true" md-card-image [src]="url">
   <md-card-content>
     <div>Age: {{age}}</div>
     <div>Height: {{height}}</div>
