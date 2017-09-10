@@ -6,7 +6,8 @@
     <ng-container cdkColumnDef="userName">
       <md-header-cell *cdkHeaderCellDef> Name</md-header-cell>
       <md-cell *cdkCellDef="let row"><span *ngIf="isAuthenticated === false">{{row.name}}</span>
-        <a *ngIf="isAuthenticated" [routerLink]="['/users', row._id]">{{row.name}}</a></md-cell>
+        <a *ngIf="isAuthenticated && currentUserProfile !== row.name" [routerLink]="['/users', row._id]">{{row.name}}</a>
+        <a *ngIf="currentUserProfile === row.name" [routerLink]="['/profile']">{{row.name}}</a></md-cell>
     </ng-container>
     <!-- Age Column -->
     <ng-container cdkColumnDef="age">
@@ -17,7 +18,7 @@
     <!-- Gender Column -->
     <ng-container cdkColumnDef="gender">
       <md-header-cell *cdkHeaderCellDef> Gender</md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.gender}}</md-cell>
+      <md-cell *cdkCellDef="let row"><span *ngIf="row.gender == 'true'">Male</span><span *ngIf="row.gender == 'false'">Female</span></md-cell>
     </ng-container>
 
     <!-- Height Column -->

@@ -20,6 +20,7 @@ export class ListComponent implements OnInit {
   users: Array<any>;
   dataSource: UsersDataSource | null;
   isAuthenticated: boolean;
+  currentUserProfile: string;
   @ViewChild(MdPaginator) paginator: MdPaginator;
 
   constructor(private userService: UserService, private authService: AuthService) {
@@ -28,6 +29,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.isAuthenticated = this.authService.isLogged();
+    this.currentUserProfile = this.authService.getLoggedUser();
     this.userService.getUsers()
       .map((res) => res.json())
       .subscribe(res => {

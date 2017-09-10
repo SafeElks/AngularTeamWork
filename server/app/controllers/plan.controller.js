@@ -4,7 +4,7 @@ const planController = (data) => {
       const weight = +req.body.weight;
       const height = +req.body.height;
       const age = +req.body.age;
-      const genderConstant = req.body.gender ? 5 : -161;
+      const genderConstant = req.body.gender === 'true' ? 5 : -161;
       const activityConstant = +req.body.activity;
       const days = +req.body.days;
       const dreamKg = +req.body.dreamKg;
