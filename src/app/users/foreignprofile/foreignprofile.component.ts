@@ -17,7 +17,7 @@ export class ForeignprofileComponent implements OnInit {
   height: string;
   weight: string;
   gender: string;
-
+  photo: string;
   constructor(
     private userService: UserService, private router: ActivatedRoute) { }
 
@@ -31,6 +31,7 @@ export class ForeignprofileComponent implements OnInit {
       .subscribe((user: any) => {
         this.username = user.name;
         this.email = user.email;
+        this.photo = user.photo.secure_url;
         this.age = user.age;
         this.height = user.height;
         this.weight = user.weight;

@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
       .subscribe((user: any) => {
         this.username = user.name;
         this.email = user.email;
-        this.photo = user.photo;
+        this.photo = user.photo.secure_url;
         this.age = user.age;
         this.height = user.height;
         this.weight = user.weight;
@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
       formData.append('photo', inputEl.files.item(0));
       this.http.post('/api/upload', formData).map((res: Response) => res.json()).subscribe(
         (success) => {
-          alert(success._body);
+          alert('Successfully uploaded');
         },
         (error) => alert(error));
     }

@@ -1,6 +1,6 @@
 <md-card class="example-card">
   <md-card-header>
-    <div class="example-header-image" [ngStyle]="{'background-image': 'url(' + '../../../assets/uploads/'+ photo + ')'}" md-card-avatar></div>
+    <div class="example-header-image" [ngStyle]="{'background-image': 'url(' + photo + ')'}" md-card-avatar></div>
     <md-card-title>{{username}}</md-card-title>
     <md-card-subtitle>{{email}}</md-card-subtitle>
   </md-card-header>
@@ -10,7 +10,7 @@
   <button type="button" (click)="upload()">
     Upload with method 2
   </button>
-  <img md-card-image src="../../../assets/uploads/{{photo}}">
+  <img md-card-image [src]="photo">
   <md-card-content>
     <div>Age: {{age}}</div>
     <div>Height: {{height}}</div>

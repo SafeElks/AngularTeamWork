@@ -4,6 +4,7 @@ const session = require('express-session');
 const config = require('../../config');
 const MongoStore = require('connect-mongo')(session);
 const multer = require('multer');
+const cloudinary = require('cloudinary');
 
 const attachTo = (app) => {
   app.use(bodyParser.json());
@@ -21,13 +22,19 @@ const attachTo = (app) => {
   app.use(multer({
     storage: multer.diskStorage({
       destination: (req, file, cb) => {
-        cb(null, './src/assets/uploads');
+        cb(null, './server/images');
       },
       filename: (req, file, cb) => {
         cb(null, Date.now() + '.jpg');
       },
     }),
   }).single('photo'));
+
+  cloudinary.config({
+    cloud_name: 'ds0cvuu5v',
+    api_key: '211411352162526',
+    api_secret: 'AQBugITNNjFxTuGaGPOgxSs0C-A',
+  });
 };
 
 module.exports = { attachTo };
