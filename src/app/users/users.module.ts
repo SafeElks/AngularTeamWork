@@ -30,6 +30,7 @@ import {ForeignprofileComponent} from './foreignprofile/foreignprofile.component
     MdPaginatorModule,
     MdTableModule,
     InlineEditorModule,
+    MdProgressBarModule,
     BrowserAnimationsModule
   ],
   declarations: [

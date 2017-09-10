@@ -24,6 +24,8 @@ export class ProfileComponent implements OnInit {
   change = false;
   uploaded = true;
   inputEl: HTMLInputElement;
+  inProgress: boolean;
+
   constructor(private userService: UserService,
               private authService: AuthService,
               private http: Http,
@@ -44,28 +46,33 @@ export class ProfileComponent implements OnInit {
         this.gender = user.gender === 'true' ? 'Male' : 'Female';
       });
   }
+
   private clearMessage() {
     setTimeout(() => {
       this.message = '';
     }, 1500);
   }
+
   upload() {
     const inputEl: HTMLInputElement = this.inputEl;
     const fileCount: number = inputEl.files.length;
     const formData = new FormData();
     if (fileCount > 0) {
       formData.append('photo', inputEl.files.item(0));
+      this.inProgress = true;
       this.http.post('/api/upload', formData)
         .map((res: Response) => res.json())
         .subscribe(() => {
-          this.uploaded = true;
-          this.message = {text: 'Successfully uploaded', status: 'yes'};
-          this.clearMessage();
-        },
-        (error) => {
-          this.message = {text: error, status: 'no'};
-          this.clearMessage();
-        });
+            this.inProgress = false;
+            this.uploaded = true;
+            this.message = {text: 'Successfully uploaded', status: 'yes'};
+            this.clearMessage();
+          },
+          (error) => {
+            this.inProgress = false;
+            this.message = {text: error, status: 'no'};
+            this.clearMessage();
+          });
     }
   }
 
