@@ -40,14 +40,13 @@
   width: 100%;
   padding: 5px;
   margin: 5px 0;
-  color: white;
-  background-color: #262626;
+  background-color: #F1F1F1;
   display: inline-block;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-  background-color: #343434;
+  background-color: #E8E8E8;
 }
 
 .inputfile + label figure {
@@ -61,7 +60,6 @@
   height: 13px;
   padding: 0;
   margin: 0 3px 0 0;
-  fill: #fff;
 }
 .label-text {
   display: inline-block;
@@ -71,15 +69,14 @@
   border: none;
   padding: 5px;
   margin: 0 0 5px 5px;
-  background-color: #262626;
+  background-color: #F1F1F1;
   outline: none;
-  color: #fff;
   text-align: center;
 }
 
 .upload-button:hover {
-  background-color: #313131;
+  background-color: #E8E8E8;
 }
 .upload-button:active {
-  background-color: #3E3E3E;
+  background-color: #D2D2D2;
 }
