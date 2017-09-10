@@ -23,16 +23,19 @@ export class BfCalculatorService {
 
   private getBfPercentageUS(bfInfo: BodyFatInfo): Observable<Response> {
     const gen = bfInfo.gender === 'true';
-    const [heightFeet, heightInches] = bfInfo.height.split(' ');
-    const [neckFeet, neckInches] = bfInfo.neck.split(' ');
-    const [waistFeet, waistInches] = bfInfo.waist.split(' ');
-    const [hipFeet, hipInches] = bfInfo.hip.split(' ');
+    try {
+      const [heightFeet, heightInches] = bfInfo.height.split(' ');
+      const [neckFeet, neckInches] = bfInfo.neck.split(' ');
+      const [waistFeet, waistInches] = bfInfo.waist.split(' ');
+      const [hipFeet, hipInches] = bfInfo.hip.split(' ');
 
-    const corsUrl = `https://cors-anywhere.herokuapp.com/`;
-    const queryUrl = `http://www.calculator.net/body-fat-calculator.html?ctype=standard&csex=${gen ? 'm' : 'f'}&cheightfeet=${heightFeet}&cheightinch=${heightInches}&cneckfeet=${neckFeet}&cneckinch=${neckInches}&cwaistfeet=${waistFeet}&cwaistinch=${waistInches}&chipfeet=${hipFeet}&chipinch=${hipInches}`;
-
-    // console.log(`Sent GET to ${queryUrl}`);
-    return this.http.get(corsUrl + queryUrl);
+      const corsUrl = `https://cors-anywhere.herokuapp.com/`;
+      const queryUrl = `http://www.calculator.net/body-fat-calculator.html?ctype=standard&csex=${gen ? 'm' : 'f'}&cheightfeet=${heightFeet}&cheightinch=${heightInches}&cneckfeet=${neckFeet}&cneckinch=${neckInches}&cwaistfeet=${waistFeet}&cwaistinch=${waistInches}&chipfeet=${hipFeet}&chipinch=${hipInches}`;
+      // console.log(`Sent GET to ${queryUrl}`);
+      return this.http.get(corsUrl + queryUrl);
+    } catch (e) {
+      return Observable.throw(e);
+    }
   }
 
   private getBfPercentageMetrics(bfInfo: BodyFatInfo): Observable<Response> {

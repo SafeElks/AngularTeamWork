@@ -1,7 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {MdInputModule, MdButtonModule, MdCardModule, MdPaginatorModule, MdTableModule} from '@angular/material';
+import {
+  MdInputModule, MdButtonModule, MdCardModule, MdPaginatorModule, MdTableModule,
+  MdProgressBar, MdProgressBarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import {UsersRouterModule} from './users-router.module';
@@ -27,6 +30,7 @@ import {ForeignprofileComponent} from './foreignprofile/foreignprofile.component
     MdPaginatorModule,
     MdTableModule,
     InlineEditorModule,
+    MdProgressBarModule,
     BrowserAnimationsModule
   ],
   declarations: [

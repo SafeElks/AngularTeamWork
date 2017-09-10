@@ -6,6 +6,7 @@
       <md-tab label="US Units">
         <app-bf-form (onBfResult)="onBfResult($event)"
                      (onProgress)="onProgress($event)"
+                     (onError)="onError($event)"
                      [unitSystem]="1"
                      [heightPlaceholder]="'height' | changeUS"
                      [neckPlaceholder]="'neck' | changeUS"
@@ -15,6 +16,7 @@
       <md-tab label="Metric Units">
         <app-bf-form (onBfResult)="onBfResult($event)"
                      (onProgress)="onProgress($event)"
+                     (onError)="onError($event)"
                      [unitSystem]="0"
                      [heightPlaceholder]="'height' | changeMetrics"
                      [neckPlaceholder]="'neck' | changeMetrics"
@@ -38,9 +40,7 @@
 
       </md-expansion-panel>
 
-      <!--<md-card class="result">-->
-        <!--{{result}}-->
-      <!--</md-card>-->
+      <app-message class="flex-item-bottom step" [message]="message" [class.show]="error"></app-message>
 
       <md-spinner class="spinner flex-item" [hidden]="!inProgress"></md-spinner>
     </div>

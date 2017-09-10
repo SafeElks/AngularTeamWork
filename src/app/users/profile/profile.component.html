@@ -1,5 +1,6 @@
 <app-message [message]="message"></app-message>
 <md-card class="example-card">
+  <md-progress-bar mode="indeterminate" [hidden]="!inProgress"></md-progress-bar>
   <md-card-header>
     <div *ngIf="change==false" class="example-header-image" [ngStyle]="{'background-image': 'url(' + photo + ')'}" md-card-avatar></div>
     <div *ngIf="change==true" class="example-header-image" [ngStyle]="{'background-image': 'url(' + url + ')'}" md-card-avatar></div>

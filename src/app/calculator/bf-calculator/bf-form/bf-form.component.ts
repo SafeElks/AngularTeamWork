@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Router} from '@angular/router';
 import {StorageService} from '../../../services/storage.service';
 import {BfCalculatorService} from '../../../services/bf-calculator.service';
+import {ErrorMessage} from '../bf-calculator.component';
 
 @Component({
   selector: 'app-bf-form',
@@ -23,11 +23,11 @@ export class BfFormComponent implements OnInit {
 
   @Output() onBfResult = new EventEmitter<string>();
   @Output() onProgress = new EventEmitter<boolean>();
+  @Output() onError = new EventEmitter<ErrorMessage>();
 
   private bodyFatKey = 'body-fat-data';
 
-  constructor(private storage: StorageService, private calculatorService: BfCalculatorService, private router: Router) {
-
+  constructor(private storage: StorageService, private calculatorService: BfCalculatorService) {
   }
 
   ngOnInit(): void {
@@ -50,12 +50,9 @@ export class BfFormComponent implements OnInit {
         const bfResult = this.extractBfPercentage(resBody);
         this.onBfResult.emit(bfResult);
       }, err => {
-        console.log(err);
+        this.onError.emit({ text: err, status: 'no'});
         this.onProgress.emit(false);
       });
-
-    // nav to calorie calculator route
-    // this.router.navigate(['']);
   }
 
   private extractData(bfData: any) {
@@ -75,7 +72,7 @@ export class BfFormComponent implements OnInit {
     const target = `<b>body fat =`;
     const resStartIndex = data.indexOf(target);
     if (resStartIndex === -1) {
-      console.log('Error, couldn\'t get body fat result');
+      this.onError.emit({ text: 'Error, couldn\'t get body fat result', status: 'no'});
       return '0%';
     }
     const resEndIndex = data.indexOf('</b', resStartIndex + target.length);
