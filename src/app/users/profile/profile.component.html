@@ -1,19 +1,20 @@
 <md-card class="example-card">
   <md-card-header>
-    <div class="example-header-image" style="
-  background-image: url('../../../assets/images/blank-profile-picture-973460_640.png')" md-card-avatar></div>
+    <div class="example-header-image" [ngStyle]="{'background-image': 'url(' + '../../../assets/uploads/'+ photo + ')'}" md-card-avatar></div>
     <md-card-title>{{username}}</md-card-title>
     <md-card-subtitle>{{email}}</md-card-subtitle>
   </md-card-header>
-  <img md-card-image src="../../../assets/images/blank-profile-picture-973460_640.png">
+  <!-- File input for upload without using the plugin. -->
+  <input id="photo" type="file" />
+  <!-- button to trigger the file upload when submitted -->
+  <button type="button" (click)="upload()">
+    Upload with method 2
+  </button>
+  <img md-card-image src="../../../assets/uploads/{{photo}}">
   <md-card-content>
     <div>Age: {{age}}</div>
     <div>Height: {{height}}</div>
     <div>Weight: {{weight}}</div>
     <div>Gender: {{gender}}</div>
   </md-card-content>
-  <md-card-actions>
-    <button md-button>LIKE</button>
-    <button md-button>SHARE</button>
-  </md-card-actions>
 </md-card>

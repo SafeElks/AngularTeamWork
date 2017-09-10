@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const config = require('../../config');
 const MongoStore = require('connect-mongo')(session);
+const multer = require('multer');
 
 const attachTo = (app) => {
   app.use(bodyParser.json());
@@ -16,6 +17,17 @@ const attachTo = (app) => {
     secret: 'secret',
     maxAge: 60000,
   }));
+
+  app.use(multer({
+    storage: multer.diskStorage({
+      destination: (req, file, cb) => {
+        cb(null, './src/assets/uploads');
+      },
+      filename: (req, file, cb) => {
+        cb(null, Date.now() + '.jpg');
+      },
+    }),
+  }).single('photo'));
 };
 
 module.exports = { attachTo };

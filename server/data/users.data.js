@@ -36,6 +36,13 @@ class UsersData extends BaseData {
     }
     return Promise.resolve(user);
   }
+
+  updateProfilePicture(id, photo) {
+    return this.collection.update({ _id: ObjectId(id) },
+      {
+        $set: { stringProfilePicture: photo.filename },
+      });
+  }
 }
 
 module.exports = UsersData;
