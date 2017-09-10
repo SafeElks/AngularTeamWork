@@ -66,5 +66,5 @@
   </table>
 </form>
 <p *ngIf="showForm === false">You need to consume <span class="kcal">{{calories}} KCAL</span> per day</p>
-<p *ngIf="showForm === false">For all our features</p>
-<p *ngIf="showForm === false"><a class="btn-register" [routerLink]="['/register']">REGISTER</a><span class="or"> or </span><button class="btn-back" (click)="goBack()">GO BACK</button></p>
+<p *ngIf="showForm === false">Register for all our features</p>
+<p *ngIf="showForm === false"><a class="btn-register" [routerLink]="['/register']">REGISTER</a><a class="btn-back" (click)="goBack()">GO BACK</a></p>
