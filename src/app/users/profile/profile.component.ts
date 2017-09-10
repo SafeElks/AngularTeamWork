@@ -20,8 +20,10 @@ export class ProfileComponent implements OnInit {
   gender: string;
   photo: string;
   url: string;
+  message: any;
   change = false;
-
+  uploaded = true;
+  inputEl: HTMLInputElement;
   constructor(private userService: UserService,
               private authService: AuthService,
               private http: Http,
@@ -42,22 +44,34 @@ export class ProfileComponent implements OnInit {
         this.gender = user.gender === 'true' ? 'Male' : 'Female';
       });
   }
-
+  private clearMessage() {
+    setTimeout(() => {
+      this.message = '';
+    }, 1500);
+  }
   upload() {
-    const inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
+    const inputEl: HTMLInputElement = this.inputEl;
     const fileCount: number = inputEl.files.length;
     const formData = new FormData();
     if (fileCount > 0) {
       formData.append('photo', inputEl.files.item(0));
-      this.http.post('/api/upload', formData).map((res: Response) => res.json()).subscribe(
-        (success) => {
-          alert('Successfully uploaded');
+      this.http.post('/api/upload', formData)
+        .map((res: Response) => res.json())
+        .subscribe(() => {
+          this.uploaded = true;
+          this.message = {text: 'Successfully uploaded', status: 'yes'};
+          this.clearMessage();
         },
-        (error) => alert(error));
+        (error) => {
+          this.message = {text: error, status: 'no'};
+          this.clearMessage();
+        });
     }
   }
 
   readUrl(event) {
+    this.inputEl = this.el.nativeElement.querySelector('#photo');
+    this.uploaded = false;
     this.change = true;
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -71,14 +85,29 @@ export class ProfileComponent implements OnInit {
   }
 
   saveAge(value) {
-    console.log(value);
+    this.userService.updateAge(value)
+      .map((res) => res.json())
+      .subscribe((response: any) => {
+        this.message = {text: response.msg, status: 'yes'};
+        this.clearMessage();
+      });
   }
 
   saveHeight(value) {
-    console.log(value);
+    this.userService.updateHeight(value)
+      .map((res) => res.json())
+      .subscribe((response: any) => {
+        this.message = {text: response.msg, status: 'yes'};
+        this.clearMessage();
+      });
   }
 
   saveWeight(value) {
-    console.log(value);
+    this.userService.updateKg(value)
+      .map((res) => res.json())
+      .subscribe((response: any) => {
+        this.message = {text: response.msg, status: 'yes'};
+        this.clearMessage();
+      });
   }
 }
