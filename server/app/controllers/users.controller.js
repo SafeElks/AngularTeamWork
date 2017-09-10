@@ -94,6 +94,33 @@ const usersController = (data) => {
       }).catch((err) => {
         return res.status(400).json({errorMsg: err});
       });
+    },
+    updateWeight(req, res){
+      const currentUserId = req.user._id;
+      return data.users.updateWeight(currentUserId.toString(), req.body.kg)
+        .then(() => {
+          res.status(200).json({msg: "Successfully updated!"})
+        }).catch((err) => {
+          return res.status(400).json({errorMsg: err});
+        });
+    },
+    updateAge(req, res){
+      const currentUserId = req.user._id;
+      return data.users.updateAge(currentUserId.toString(), req.body.age)
+        .then(() => {
+          res.status(200).json({msg: "Successfully updated!"})
+        }).catch((err) => {
+          return res.status(400).json({errorMsg: err});
+        });
+    },
+    updateHeight(req, res){
+      const currentUserId = req.user._id;
+      return data.users.updateHeight(currentUserId.toString(), req.body.height)
+        .then(() => {
+          res.status(200).json({msg: "Successfully updated!"})
+        }).catch((err) => {
+          return res.status(400).json({errorMsg: err});
+        });
     }
   };
 };

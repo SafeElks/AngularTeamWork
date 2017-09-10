@@ -43,6 +43,25 @@ class UsersData extends BaseData {
         $set: { photo: photo },
       });
   }
+
+  updateWeight(id, weight) {
+    return this.collection.update({ _id: ObjectId(id) },
+      {
+        $set: { weight: weight },
+      });
+  }
+  updateAge(id, age) {
+    return this.collection.update({ _id: ObjectId(id) },
+      {
+        $set: { age: age },
+      });
+  }
+  updateHeight(id, height) {
+    return this.collection.update({ _id: ObjectId(id) },
+      {
+        $set: { height: height },
+      });
+  }
 }
 
 module.exports = UsersData;
