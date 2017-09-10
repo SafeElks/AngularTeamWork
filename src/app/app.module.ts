@@ -22,6 +22,7 @@ import {AuthService} from './services/auth.service';
 import {UserService} from './services/user.service';
 import {HomeService} from './services/home.service';
 import {StorageService} from "./services/storage.service";
+import {BfCalculatorService} from "./services/bf-calculator.service";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {StorageService} from "./services/storage.service";
     AuthService,
     UserService,
     HomeService,
-    StorageService
+    StorageService,
+    BfCalculatorService
   ]
 })
 export class AppModule {

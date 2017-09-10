@@ -33,3 +33,9 @@ export class ChangeUS implements PipeTransform {
     return newStr;
   }
 }
+
+export enum Units {
+  Metrics = 1,
+  US = 2,
+  Other = 3
+}

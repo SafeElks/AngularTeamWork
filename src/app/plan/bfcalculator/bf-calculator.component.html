@@ -3,11 +3,11 @@
   <div class="row">
 
     <md-tab-group class="col col-9">
-      <md-tab label="US Units"><app-bf-form [heightPlaceholder]="'height' | changeUS"
+      <md-tab label="US Units"><app-bf-form [unitSystem]='1' [heightPlaceholder]="'height' | changeUS"
                                             [neckPlaceholder]="'neck' | changeUS"
                                             [waistPlaceholder]="'waist' | changeUS"
                                             [hipPlaceholder]="'hip' | changeUS"></app-bf-form></md-tab>
-      <md-tab label="Metric Units"><app-bf-form [heightPlaceholder]="'height' | changeMetrics"
+      <md-tab label="Metric Units"><app-bf-form [unitSystem]='0' [heightPlaceholder]="'height' | changeMetrics"
                                                 [neckPlaceholder]="'neck' | changeMetrics"
                                                 [waistPlaceholder]="'waist' | changeMetrics"
                                                 [hipPlaceholder]="'hip' | changeMetrics"></app-bf-form></md-tab>

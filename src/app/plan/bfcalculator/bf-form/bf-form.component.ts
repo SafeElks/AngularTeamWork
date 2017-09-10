@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {StorageService} from "../../../services/storage.service";
+import {BfCalculatorService} from "../../../services/bf-calculator.service";
+import {Units} from "../bf-calculator.component";
 
 @Component({
   selector: 'app-bf-form',
@@ -20,7 +22,7 @@ export class BfFormComponent implements OnInit {
   @Input() hipPlaceholder: number;
 
   private bodyFatKey = "body-fat-data";
-  private unitSystem = Units.Metrics;
+  @Input() unitSystem = Units.Other;
 
   get() {
     return this.unitSystem;
@@ -30,7 +32,7 @@ export class BfFormComponent implements OnInit {
       this.unitSystem = value;
   }
 
-  constructor(private storage: StorageService, private router: Router) {
+  constructor(private storage: StorageService, private calculatorService : BfCalculatorService, private router: Router) {
 
   }
 
@@ -45,8 +47,16 @@ export class BfFormComponent implements OnInit {
   onSubmit(form: any): void {
     const data = JSON.stringify(form);
     this.storage.add(this.bodyFatKey + this.unitSystem, data);
+
+    const res = this.calculatorService
+      .getBfPercentage(form, Units.Metrics)
+      .subscribe((response: any) => {
+        console.log(response._body);
+      });
+
+
     // nav to calorie calculator route
-    this.router.navigate(['']);
+    // this.router.navigate(['']);
   }
 
   private extractData(bfData: any) {
@@ -71,8 +81,4 @@ export interface BodyFatInfo {
   gender: string;
 }
 
-export enum Units {
-  Metrics = 1,
-  US = 2,
-  Other = 3
-}
+
