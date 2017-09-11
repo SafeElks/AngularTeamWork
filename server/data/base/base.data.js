@@ -11,7 +11,7 @@ class BaseData {
 
   getAll() {
     let result = this.collection
-      .find()
+      .find().sort({likes: -1})
       .toArray();
 
     if (this.ModelClass.toViewModel) {

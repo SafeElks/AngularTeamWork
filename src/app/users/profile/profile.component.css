@@ -1,5 +1,5 @@
 .example-card {
-  width: 30%;
+  width: 25%;
   margin: 0 auto;
   margin-top: 60px;
   overflow: hidden;
@@ -7,19 +7,19 @@
 
 @media (max-width: 640px) {
   .example-card {
-    width: 70%;
+    width: 65%;
   }
 }
 
 @media (min-width: 640px) and (max-width: 800px) {
   .example-card {
-    width: 55%;
+    width: 45%;
   }
 }
 
 @media (min-width: 800px) and (max-width: 1200px) {
   .example-card {
-    width: 40%;
+    width: 35%;
   }
 }
 
@@ -62,6 +62,7 @@
   margin: 0 3px 0 0;
 }
 .label-text {
+  font-size: 0.9em;
   display: inline-block;
 }
 .upload-button {
