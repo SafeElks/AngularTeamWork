@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MdDatepicker} from '@angular/material';
-import {PhysicalDetails} from '../models/physicalDetails.model';
-import {PlanService} from '../services/plan.service';
-import {AuthService} from '../services/auth.service';
+import { Component, OnInit, DoCheck, ViewChild } from '@angular/core';
+import { MdDatepicker } from '@angular/material';
+import { PhysicalDetails } from '../models/physicalDetails.model';
+import { PlanService } from '../services/plan.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-plan',
@@ -16,10 +16,10 @@ export class PlanComponent implements OnInit {
   showForm = true;
   title = 'Tell us about yourself';
   activities = [
-    {type: 'Little or no exercise', value: 1.2},
-    {type: 'Lightly Active - 1-3 times/week', value: 1.45},
-    {type: 'Moderately Active - 3-5 times/week', value: 1.70},
-    {type: 'Very Active - 6-7 times/week', value: 1.95}
+    { type: 'Little or no exercise', value: 1.2 },
+    { type: 'Lightly Active - 1-3 times/week', value: 1.45 },
+    { type: 'Moderately Active - 3-5 times/week', value: 1.70 },
+    { type: 'Very Active - 6-7 times/week', value: 1.95 }
   ];
   d = new Date();
   year = this.d.getFullYear();
@@ -28,13 +28,18 @@ export class PlanComponent implements OnInit {
   minDate = new Date(this.year, this.month, this.day + 1);
   maxDate = new Date(this.year + 1, this.month, this.day);
   calories: number;
+  public isLoggedIn: boolean;
   message;
   constructor(private planService: PlanService, private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.isLoggedIn = this.authService.isLogged();
   }
 
+  DoCheck() {
+    this.isLoggedIn = this.authService.isLogged();
+  }
   onSubmit(): void {
     const days = Math.ceil((((new Date(this.physicalDetails.days)).getTime()) - (new Date().getTime())) / (1000 * 3600 * 24));
     Object.assign(this.data, this.physicalDetails);
@@ -50,7 +55,7 @@ export class PlanComponent implements OnInit {
           this.title = 'Results';
         } else {
           console.log('It is impossible, please select more days');
-          this.message = { text: 'It is impossible, please select more days', status: 'no'};
+          this.message = { text: 'It is impossible, please select more days', status: 'no' };
         }
       }, (err) => {
         console.log(err);

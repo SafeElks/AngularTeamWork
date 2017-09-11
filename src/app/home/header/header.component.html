@@ -2,6 +2,8 @@
     <div class="content">
         <h1>{{title}}</h1>
         <h3>Do you want to be the best version of yourself?</h3>
-        <a md-raised-button [routerLink]="['/plan']">Get Started</a>
+        <a *ngIf="!isLoggedIn" md-raised-button [routerLink]="['/plan']">Get Started</a>
+        <a *ngIf="isLoggedIn" md-raised-button [routerLink]="['/plan']">Calorie calculator</a>
+        <a *ngIf="isLoggedIn" md-raised-button [routerLink]="['/bfc']">Body fat calculator</a>
     </div>
 </div>

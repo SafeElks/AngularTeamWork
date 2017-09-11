@@ -23,3 +23,6 @@
     margin: 0 50px;     
 }
 
+md-raised-button:hover {
+    text-decoration: none;
+}

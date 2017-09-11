@@ -11,5 +11,7 @@
       <img src="{{logo.logoUrl}}" alt="logo">
     </div>
   </div>
-  <a md-raised-button [routerLink]="['/plan']">Get Started</a>
+  <a *ngIf="!isLoggedIn" md-raised-button [routerLink]="['/plan']">Get Started</a>
+  <a *ngIf="isLoggedIn" md-raised-button [routerLink]="['/plan']">Calorie calculator</a>
+  <a *ngIf="isLoggedIn" md-raised-button [routerLink]="['/bfc']">Body fat calculator</a>
 </div>

@@ -47,10 +47,14 @@ export class BfFormComponent implements OnInit {
       .getBfPercentage(form, this.unitSystem)
       .subscribe((response: any) => {
         const resBody = response._body;
+        if (!resBody) {
+          this.onProgress.emit(false);
+          throw Error('Format error');
+        }
         const bfResult = this.extractBfPercentage(resBody);
         this.onBfResult.emit(bfResult);
       }, err => {
-        this.onError.emit({ text: err, status: 'no'});
+        this.onError.emit({text: err, status: 'no'});
         this.onProgress.emit(false);
       });
   }
@@ -72,7 +76,7 @@ export class BfFormComponent implements OnInit {
     const target = `<b>body fat =`;
     const resStartIndex = data.indexOf(target);
     if (resStartIndex === -1) {
-      this.onError.emit({ text: 'Error, couldn\'t get body fat result', status: 'no'});
+      this.onError.emit({text: 'Error, couldn\'t get body fat result', status: 'no'});
       return '0%';
     }
     const resEndIndex = data.indexOf('</b', resStartIndex + target.length);
