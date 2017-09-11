@@ -16,7 +16,7 @@ import {AuthService} from '../../services/auth.service';
 })
 
 export class ListComponent implements OnInit {
-  displayedColumns = ['photo', 'userName', 'gender', 'age', 'weight', 'height', 'dreamKg', 'email'];
+  displayedColumns = ['userName', 'email'];
   users: Array<any>;
   dataSource: UsersDataSource | null;
   isAuthenticated: boolean;
