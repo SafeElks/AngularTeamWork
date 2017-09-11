@@ -5,7 +5,7 @@
 }
 
 .content a {
-    margin: 60px 0 0 0;
+    margin: 60px 5px 0 5px;
 }
 
 .content-row {
@@ -21,8 +21,4 @@
 .content-row h2 {
     display: inline-block;
     margin: 0 50px;     
-}
-
-md-raised-button:hover {
-    text-decoration: none;
 }
