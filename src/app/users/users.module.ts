@@ -1,3 +1,4 @@
+import { EditingDirective } from './../shared/editing.directive';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -41,7 +42,8 @@ import {ForeignprofileComponent} from './foreignprofile/foreignprofile.component
     ProfileComponent,
     ListComponent,
     MessageComponent,
-    ForeignprofileComponent
+    ForeignprofileComponent,
+    EditingDirective
   ],
   exports: [
     MessageComponent
