@@ -24,7 +24,9 @@ const usersController = (data) => {
         height: +req.body.height,
         age: +req.body.age,
         gender: req.body.gender,
-        dreamKg: +req.body.dreamKg
+        dreamKg: +req.body.dreamKg,
+        likes: 0,
+        liked: []
       };
       return data.users.create(user)
         .then(() => {
@@ -95,7 +97,10 @@ const usersController = (data) => {
         return res.status(400).json({errorMsg: err});
       });
     },
-    updateWeight(req, res){
+    updateWeight(req, res) {
+      if (!req.user) {
+        return res.status(401).json({errorMsg: "You are not logged in!"});
+      }
       const currentUserId = req.user._id;
       return data.users.updateWeight(currentUserId.toString(), req.body.kg)
         .then(() => {
@@ -104,7 +109,10 @@ const usersController = (data) => {
           return res.status(400).json({errorMsg: err});
         });
     },
-    updateAge(req, res){
+    updateAge(req, res) {
+      if (!req.user) {
+        return res.status(401).json({errorMsg: "You are not logged in!"});
+      }
       const currentUserId = req.user._id;
       return data.users.updateAge(currentUserId.toString(), req.body.age)
         .then(() => {
@@ -113,7 +121,10 @@ const usersController = (data) => {
           return res.status(400).json({errorMsg: err});
         });
     },
-    updateHeight(req, res){
+    updateHeight(req, res) {
+      if (!req.user) {
+        return res.status(401).json({errorMsg: "You are not logged in!"});
+      }
       const currentUserId = req.user._id;
       return data.users.updateHeight(currentUserId.toString(), req.body.height)
         .then(() => {
@@ -121,6 +132,47 @@ const usersController = (data) => {
         }).catch((err) => {
           return res.status(400).json({errorMsg: err});
         });
+    },
+    isProfileLiked(req, res) {
+      if (!req.user) {
+        return res.status(401).json({errorMsg: "You are not logged in!"});
+      }
+      const currentUserId = req.user._id;
+      const searchedUserId = req.body.id;
+      return data.users.isLiked(currentUserId.toString(), searchedUserId)
+        .then((liked) => {
+          res.status(200).json({liked: liked});
+        }).catch((err) => {
+          return res.status(400).json({errorMsg: err});
+        })
+    },
+    likeProfile(req, res) {
+      if (!req.user) {
+        return res.status(401).json({errorMsg: "You are not logged in!"});
+      }
+      const currentUserId = req.user._id;
+      const likedUser = req.body.id;
+      return data.users.likeUser(likedUser)
+        .then(() => {
+          return data.users.addToLiked(currentUserId, likedUser)
+            .then(() => {
+              return res.status(200).json({info: 'Liked!'})
+            });
+        })
+    },
+    unlikeProfile(req, res) {
+      if (!req.user) {
+        return res.status(401).json({errorMsg: "You are not logged in!"});
+      }
+      const currentUserId = req.user._id;
+      const unlikedUser = req.body.id;
+      return data.users.unlikeUser(unlikedUser)
+        .then(() => {
+          return data.users.removeFromLiked(currentUserId, unlikedUser)
+            .then(() => {
+              return res.status(200).json({info: 'Unliked!'})
+            });
+        })
     }
   };
 };

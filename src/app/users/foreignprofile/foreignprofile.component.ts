@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -18,14 +18,20 @@ export class ForeignprofileComponent implements OnInit {
   weight: string;
   gender: string;
   photo: string;
-  constructor(
-    private userService: UserService, private router: ActivatedRoute) { }
+  isLiked: boolean;
+
+  constructor(private userService: UserService, private router: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.sub = this.router.params.subscribe(params => {
       this.id = params['id'];
     });
-
+    this.userService.checkIsLiked(this.id)
+      .map((res) => res.json())
+      .subscribe((response) => {
+        this.isLiked = response.liked;
+      });
     this.userService.getProfile(this.id)
       .map((res) => res.json())
       .subscribe((user: any) => {
@@ -39,4 +45,21 @@ export class ForeignprofileComponent implements OnInit {
       });
   }
 
+  like() {
+    this.userService.likeProfile(this.id)
+      .map((res) => res.json())
+      .subscribe((response) => {
+        console.log(response.info);
+      });
+    this.isLiked = true;
+  }
+
+  unlike() {
+    this.userService.unlikeProfile(this.id)
+      .map((res) => res.json())
+      .subscribe((response) => {
+        console.log(response.info);
+      });
+    this.isLiked = false;
+  }
 }

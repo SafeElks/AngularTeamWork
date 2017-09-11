@@ -8,6 +8,9 @@ const attachTo = (app, { usersController }) => {
   app.post('/api/users/kg', usersController.updateWeight);
   app.post('/api/users/height', usersController.updateHeight);
   app.post('/api/users/age', usersController.updateAge);
+  app.post('/api/users/isLiked', usersController.isProfileLiked);
+  app.post('/api/users/like', usersController.likeProfile);
+  app.post('/api/users/unlike', usersController.unlikeProfile);
 };
 
 module.exports = { attachTo };

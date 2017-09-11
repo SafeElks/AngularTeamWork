@@ -14,6 +14,9 @@ export class UserService {
   private updateKgUrl = '/api/users/kg';
   private updateAgeUrl = '/api/users/age';
   private updateHeightUrl = '/api/users/height';
+  private isLikedUrl = '/api/users/isLiked';
+  private likeUrl = '/api/users/like';
+  private unlikeUrl = '/api/users/unlike';
 
   constructor(private http: Http) {
   }
@@ -47,10 +50,24 @@ export class UserService {
   updateAge(age: string): Observable<Response> {
     return this.http.post(this.updateAgeUrl, JSON.stringify({age: age}), {headers: this.headers});
   }
+
   updateKg(kg: string): Observable<Response> {
     return this.http.post(this.updateKgUrl, JSON.stringify({kg: kg}), {headers: this.headers});
   }
+
   updateHeight(height: string): Observable<Response> {
     return this.http.post(this.updateHeightUrl, JSON.stringify({height: height}), {headers: this.headers});
+  }
+
+  checkIsLiked(id: string): Observable<Response> {
+    return this.http.post(this.isLikedUrl, JSON.stringify({id: id}), {headers: this.headers});
+  }
+
+  likeProfile(id: string): Observable<Response> {
+    return this.http.post(this.likeUrl, JSON.stringify({id: id}), {headers: this.headers});
+  }
+
+  unlikeProfile(id: string): Observable<Response> {
+    return this.http.post(this.unlikeUrl, JSON.stringify({id: id}), {headers: this.headers});
   }
 }

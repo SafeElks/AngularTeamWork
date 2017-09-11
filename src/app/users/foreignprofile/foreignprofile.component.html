@@ -12,6 +12,7 @@
     <div>Gender: {{gender}}</div>
   </md-card-content>
   <md-card-actions>
-    <button md-button>LIKE</button>
+    <button *ngIf="!isLiked" (click)="like()" md-button>LIKE</button>
+    <button *ngIf="isLiked" (click)="unlike()" md-button>UNLIKE</button>
   </md-card-actions>
 </md-card>
