@@ -35,6 +35,7 @@ export class PlanComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isLogged();
+    console.log(this.physicalDetails.age);
   }
 
   DoCheck() {

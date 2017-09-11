@@ -2,7 +2,7 @@
 
   <md-table #table [dataSource]="dataSource">
 
-    <!-- Name Column -->
+    <!-- User Column -->
     <ng-container cdkColumnDef="userName">
       <md-header-cell *cdkHeaderCellDef> User</md-header-cell>
       <md-cell *cdkCellDef="let row"><img class="profile-pic" src="{{row.photo.secure_url}}" alt=""><span *ngIf="isAuthenticated === false">{{row.name}}</span>
@@ -14,6 +14,12 @@
     <ng-container cdkColumnDef="email">
       <md-header-cell *cdkHeaderCellDef> Email</md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.email}}</md-cell>
+    </ng-container>
+
+    <!-- Likes Column -->
+    <ng-container cdkColumnDef="likes">
+      <md-header-cell *cdkHeaderCellDef> Likes</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.likes}}</md-cell>
     </ng-container>
 
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
